@@ -1,0 +1,269 @@
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+}
+  
+  
+  /* .node{
+    background-color: wheat;
+    width: 26px;
+    height: 26px;
+    -webkit-mask: url("../../public/icons/treeView-icon/node.svg") no-repeat center;
+    mask: url("../../public/icons/treeView-icon/node.svg") no-repeat center;
+  }
+  
+  .radios{
+    background-color: wheat;
+    width: 26px;
+    height: 26px;
+    -webkit-mask: url("../../public/icons/treeView-icon/radio.svg") no-repeat center;
+    mask: url("../../public/icons/treeView-icon/radio.svg") no-repeat center;
+  }
+  
+  .radio2{
+    background-color: wheat;
+    width: 26px;
+    height: 26px;
+    -webkit-mask: url("../../public/icons/treeView-icon/radio2.svg") no-repeat center;
+    mask: url("../../public/icons/treeView-icon/radio2.svg") no-repeat center;
+  }
+  
+  .network{
+    background-color: wheat;
+    width: 26px;
+    height: 26px;
+    -webkit-mask: url("../../public/icons/treeView-icon/network.svg") no-repeat center;
+    mask: url("../../public/icons/treeView-icon/network.svg") no-repeat center;
+  }
+  
+  .nodes{
+    background-color: wheat;
+    width: 26px;
+    height: 26px;
+    -webkit-mask: url("../../public/icons/treeView-icon/nodes.svg") no-repeat center;
+    mask: url("../../public/icons/treeView-icon/nodes.svg") no-repeat center;
+  }
+  
+  .antenna{
+    background-color: wheat;
+    width: 26px;
+    height: 26px;
+    -webkit-mask: url("../../public/icons/treeView-icon/radio.svg") no-repeat center;
+    mask: url("../../public/icons/treeView-icon/radio.svg") no-repeat center;
+    
+  } */
+  
+#network-class-ContextMenu{
+  background: rgb(163, 134, 84);
+  color: black;
+  border-radius: 0px 10px 10px 10px;
+  z-index: 200;
+}
+
+#network-class-ContextMenu > ul {
+  list-style-type: none;
+}
+
+#nodes-class-ContextMenu{
+  background: rgb(163, 134, 84);
+  color: black;
+  border-radius: 0px 10px 10px 10px;
+  z-index: 200;
+}
+
+#nodes-class-ContextMenu > ul {
+  list-style-type: none;
+}
+
+#node-class-ContextMenu{
+  background: rgb(163, 134, 84);
+  color: black;
+  border-radius: 0px 10px 10px 10px;
+  z-index: 200;
+}
+
+#node-class-ContextMenu > ul {
+  list-style-type: none;
+}
+
+#radios-class-ContextMenu{
+  background: rgb(163, 134, 84);
+  color: black;
+  border-radius: 0px 10px 10px 10px;
+  z-index: 200;
+}
+
+#radios-class-ContextMenu > ul {
+  list-style-type: none;
+}
+
+#radio2-class-ContextMenu{
+  background: rgb(163, 134, 84);
+  color: black;
+  border-radius: 0px 10px 10px 10px;
+  z-index: 200;
+}
+
+#radio2-class-ContextMenu > ul {
+  list-style-type: none;
+}
+
+.treeViewContextMenuItem{
+  padding-bottom: 3px;
+  border-bottom-color: rgba(7, 7, 7, 0.699)!important;
+  padding-inline: 10px;
+  border-bottom: 1px solid #ccc;
+  padding-top: 3px;
+}
+
+.contextMenuItem:hover{
+  color: wheat;
+  cursor: pointer;
+}
+
+.lastTreeViewContextMenuItem{
+  padding-inline: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.treeViewContextMenuUl{
+  padding-inline: 0;
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+}
+
+.network-class{
+  border-radius: 0px !important;
+}
+
+.radio2-class{
+  border-radius: 0px !important;
+}
+
+.nodes-class{
+  border-radius: 0px !important;
+
+}
+
+.node-class{
+  border-radius: 0px !important;
+
+}
+
+.radio2-class{
+  border-radius: 0px !important;
+}
+
+.radios-class{
+  border-radius: 0px !important;
+}
+
+
+.node-class:hover , .radio-class:hover , .network-class:hover , .nodes-class:hover, .radio2-class:hover, .radios-class:hover {
+  background-color: #f3e1a073 !important;
+  
+}
+
+.css-15t4dwi-MuiTreeItem2-content{
+  background-color:  rgb(24, 24, 24) !important;
+
+
+}
+
+.css-1p3mzdz-MuiTreeItem2-content{
+  background-color: #f3e1a02c !important;
+
+}
+
+
+.css-jkg9m-MuiTreeItem2-content{
+  background-color: #f3e1a02c !important;
+}
+
+.css-15goctn-MuiTreeItem2-root {
+  border-left: 1px double wheat !important;
+}
+
+.MuiSvgIcon-root{
+  color: wheat;
+}
+
+#tree-view-box{
+  background-color: rgb(24, 24, 24);
+  color: aliceblue;
+  border-color: aliceblue;
+  margin: 0;
+
+  height: 95.1vh;
+  z-index: 2;
+  width: 20vw;
+  padding: 0;
+}
+
+.css-ue8g38{
+  max-width: none !important;
+}
+
+.css-1qioken-MuiTreeItem2-label{
+  text-align: start;
+}
+
+
+#tree-view{
+  background-color: bisque;
+  height: 95vh;
+  z-index: 2;
+  width: 15vw;
+  margin: 0;
+  padding: 0;
+}
+
+#root-tree-view{
+  padding: 1vw;
+}
+
+#nodeContextMenu{
+background: burlywood;
+border-radius: 0px 10px 10px 10px;
+z-index: 9;
+}
+
+#nodesContextMenu{
+background: burlywood;
+border-radius: 0px 10px 10px 10px;
+z-index: 9;
+
+}
+
+.nodeContextMenuUl{
+padding-inline: 0;
+margin-block-start: 0px;
+margin-block-end: 0px;
+}
+
+.nodeContextMenuItem{
+padding-bottom: 3px;
+border-bottom-color: rgb(210, 162, 100)!important;
+padding-inline: 10px;
+border-bottom: 1px solid #ccc;
+padding-top: 3px;
+
+
+}
+
+.lastNodeContextMenuItem{
+padding-inline: 10px;
+padding-top: 3px;
+padding-bottom: 3px;
+}
+
+/* Remove default bullets */
+ul, #tree-view {
+  list-style-type: none;
+}
+
+li{
+    text-align: left;
+}

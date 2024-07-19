@@ -1,23 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import ToolBar from "./component/ToolBar";
+import Test from './component/Test';
+import TreeView from './component/TreeView';
+import Learning from './component/Learning';
+import AddBookContent from "./component/AddBookContent";
+import React, { useEffect, useState } from 'react';
+
+import { Route } from "wouter";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ToolBar></ToolBar>
+
+      {/* todo: Add routing */}
+
+      <Route path='/config' component={Test}></Route>
+      <Route path='/settings' component={Learning}></Route>
+      <Route path='/attention' component={AddBookContent}></Route>
+
+
     </div>
   );
 }

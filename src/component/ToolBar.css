@@ -1,0 +1,165 @@
+.left-float{
+    margin-right:auto;
+}
+  
+#toolBar {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    width: 100%;
+    z-index: 9;
+    display: flex;
+    direction: rtl;
+    align-items: center;
+
+}
+
+#logo{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 25%;
+    z-index: 100;
+    /* line-height: 46px; */
+    color: aliceblue;
+    font-family: "titel-font";
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#topBar{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 80%;
+    z-index: 100;
+    direction: rtl;
+    display: flex;
+}
+  
+
+  
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 1vh 1vw;
+    text-decoration: none;
+}
+  
+li a:hover:not(.green-tab) {
+    background-color: #111;
+}
+  
+.green-tab {
+    background-color: #04AA6D;
+}
+  
+  
+.home::before, .config::before, .attention::before, .logs::before, .settings::before{
+    content: '';
+    display: inline-block;
+    width: 2vw; 
+    height: 2.4vh; 
+    margin-right: 5px;
+    background-size: cover;
+    /* line-height: 2.4vh;     check it!!!!!!!!!!!!!!            */ 
+}
+  
+/* .home::before{
+    background-color: white;
+    -webkit-mask: url("../../public/icons/home-icon.svg") no-repeat center;
+    mask: url("../../public/icons/home-icon.svg") no-repeat center;
+}
+  
+.config::before{
+    background-color: white;
+    -webkit-mask: url("../../public/icons/config-icon.svg") no-repeat center;
+    mask: url("../../public/icons/config-icon.svg") no-repeat center;
+}
+  
+.attention::before{
+    background-color: white;
+    -webkit-mask: url("../../public/icons/attention-icon.svg") no-repeat center;
+    mask: url("../../public/icons/attention-icon.svg") no-repeat center;
+}
+  
+.logs::before{
+    background-color: white;
+    -webkit-mask: url("../../public/icons/logs-icon.svg") no-repeat center;
+    mask: url("../../public/icons/logs-icon.svg") no-repeat center;
+}
+.settings::before{
+    background-color: white;
+    -webkit-mask: url("../../public/icons/settings-icon.svg") no-repeat center;
+    mask: url("../../public/icons/settings-icon.svg") no-repeat center;
+}
+  
+.account::before{
+    content: '';
+    display: inline-block;
+    width: 2vw; 
+    height: 2.4vh; 
+    background-color: black;
+    -webkit-mask: url("../../public/icons/account-icon.svg") no-repeat center;
+    mask: url("../../public/icons/account-icon.svg") no-repeat center;  
+    background-size: cover;
+    margin-right: 5px; 
+} */
+  
+.menu {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: white;
+    padding: 10px; 
+}
+  
+#topBar li:hover .menu {
+    display: block;  
+}
+  
+.contextMenuToolBar {
+    width: 150px;
+    position: absolute;
+    background-color: #333;
+    border: 1px solid #202020;
+    border-radius: 1px 1px 10px 1px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 0px;
+    z-index: 1000;
+    color: aliceblue;
+    list-style-type: none;
+    margin: 0;
+    direction: rtl;
+}
+  
+.menuItem {
+    padding: 8px 15px;
+    cursor: pointer;
+}
+  
+.menuItem:hover {
+    background-color: #202020;
+    border-radius: 1px 1px 10px 1px;
+  
+}
+
+@media (max-width: 1000px) {
+    .home::before, .config::before, .attention::before, .logs::before, .settings::before, .account::before{
+        display: none;
+
+    }
+}
+
+@media (max-height: 750px) {
+    .home::before, .config::before, .attention::before, .logs::before, .settings::before, .account::before{
+        display: none;
+
+    }
+}

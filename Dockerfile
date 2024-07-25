@@ -17,7 +17,7 @@ COPY . .
 RUN npm run build
 
 # Stage 2: Serve the application with Nginx
-FROM nginx:alpine
+FROM docker.arvancloud.ir/nginx:alpine
 
 # Copy the built React app from the previous stage
 COPY --from=build /app/build /usr/share/nginx/html

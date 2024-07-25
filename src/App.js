@@ -6,7 +6,7 @@ import Learning from './component/Learning';
 import AddBookContent from "./component/AddBookContent";
 import React, { useEffect, useState } from 'react';
 
-import { Route } from "wouter";
+import { Route, Router } from "wouter";
 
 function App() {
   return (
@@ -15,10 +15,13 @@ function App() {
 
       {/* todo: Add routing */}
 
-      <Route path='/config' component={Test}></Route>
-      <Route path='/settings' component={Learning}></Route>
-      <Route path='/attention' component={AddBookContent}></Route>
+      <Router>
+        <Route path='/config' component={Test}></Route>
+        <Route path='/settings' component={Learning}></Route>
+        <Route path='/attention' component={AddBookContent}></Route>
 
+      </Router>
+      
 
     </div>
   );

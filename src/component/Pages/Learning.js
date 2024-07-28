@@ -1,12 +1,16 @@
 import './Learning.css'
 import TreeView from '../TreeView';
 import React from "react";
+import Test from './Test';
 
 
 function Learning() {
   return (
-    <div className="learning-page content-below-toolBar">
+    <div id='learning-page' className="content-below-toolBar">
         <TreeView></TreeView>
+        <div className='learning-content'>
+          <Test></Test>
+        </div>
 
     </div>
   );

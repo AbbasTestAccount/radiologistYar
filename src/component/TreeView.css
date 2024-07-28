@@ -195,10 +195,8 @@ code {
   color: aliceblue;
   border-color: aliceblue;
   margin: 0;
-
-  height: 95.1vh;
   z-index: 2;
-  width: 20vw;
+  width: 30vw;
   padding: 0;
 }
 

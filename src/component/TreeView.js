@@ -225,7 +225,13 @@ const CustomTreeItem = forwardRef(function CustomTreeItem(props, ref) {
 })
 
 
-
+const removeHeightFromElements = () => {
+  const elements = document.querySelectorAll('.css-1x65hva');
+  elements.forEach(element => {
+    console.error("000000000000000000000000000");
+    element.style.height = '';
+  });
+};
 
  const TreeView = (props)=> {
 
@@ -353,8 +359,12 @@ const CustomTreeItem = forwardRef(function CustomTreeItem(props, ref) {
 
     setLastID(findBiggestId(items))
     getAllItems(ITEMS)
-
-
+    
+    setTimeout(() => {
+      addDashLine();
+      initEventListener();
+      removeHeightFromElements();
+    }, 1000);
 
   }, [])
 
@@ -513,7 +523,7 @@ const CustomTreeItem = forwardRef(function CustomTreeItem(props, ref) {
       </div>
 
 
-      <Box id='tree-view-box' sx={{marginTop:1 ,height: '100vh', flexGrow: 1 }}>
+      <Box id='tree-view-box' sx={{marginTop:1 , flexGrow: 1 }}>
         <RichTreeView
           aria-label="icon expansion"
           sx={{ position: 'relative' }}

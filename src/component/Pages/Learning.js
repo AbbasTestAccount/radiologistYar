@@ -1,5 +1,5 @@
 import './Learning.css'
-import TreeView from './TreeView';
+import TreeView from '../TreeView';
 import React from "react";
 
 

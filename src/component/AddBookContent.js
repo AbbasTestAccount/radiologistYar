@@ -42,7 +42,7 @@ function AddBookContent() {
   }, [bookData]);
 
   return (
-    <div className="add-book-content">
+    <div className="add-book-content content-below-toolBar">
       <CKEditor
         editor={ClassicEditor}
         onInit={editor => { }}

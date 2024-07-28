@@ -16,7 +16,6 @@ function App() {
     const topBar = document.getElementById('topBar')
     const topBarRect = topBar.getBoundingClientRect()
     document.getElementById('content-under-toolBar').style.paddingTop = `${topBarRect.y+topBar.offsetHeight}px`
-    console.error("dsaaaaaaaaaaaaaaad");
   },[browserHeight])
 
   useEffect(() => {

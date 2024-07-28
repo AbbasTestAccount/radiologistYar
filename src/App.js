@@ -1,9 +1,9 @@
 import './App.css';
 import ToolBar from "./component/ToolBar";
-import Test from './component/Test';
-import TreeView from './component/TreeView';
-import Learning from './component/Learning';
+import Test from './component/Pages/Test';
+import Learning from './component/Pages/Learning';
 import AddBookContent from "./component/AddBookContent";
+import Home from "./component/Pages/Home";
 import React, { useEffect, useState } from 'react';
 
 import { Route, Router } from "wouter";
@@ -16,9 +16,10 @@ function App() {
       {/* todo: Add routing */}
 
       <Router>
+        <Route path='/home' component={Home}></Route>
         <Route path='/config' component={Test}></Route>
-        <Route path='/settings' component={Learning}></Route>
-        <Route path='/attention' component={AddBookContent}></Route>
+        <Route path='/bookContent' component={Learning}></Route>
+        <Route path='/addContent' component={AddBookContent}></Route>
 
       </Router>
       

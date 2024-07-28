@@ -5,9 +5,9 @@ const ToolBar = (props)=>{
 
   const [showMenuHome, setShowMenuHome] = useState(false);
   const [showMenuConfig, setShowMenuConfig] = useState(false);
-  const [showMenuAttention, setShowMenuAttention] = useState(false);
+  const [showMenuAddContent, setShowMenuAddContent] = useState(false);
   const [showMenuLogs, setShowMenuLogs] = useState(false);
-  const [showMenuSettings, setShowMenuSettings] = useState(false);
+  const [showMenuBookContent, setShowMenuBookContent] = useState(false);
 
   const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 });
 
@@ -31,16 +31,16 @@ const ToolBar = (props)=>{
         setShowMenuConfig(showStatus);
         break;
 
-      case 'attention':
-        setShowMenuAttention(showStatus);
+      case 'addContent':
+        setShowMenuAddContent(showStatus);
         break;
 
       case 'logs':
         setShowMenuLogs(showStatus);
         break;
 
-      case 'settings':
-        setShowMenuSettings(showStatus);
+      case 'bookContent':
+        setShowMenuBookContent(showStatus);
         break;
     
       default:
@@ -85,11 +85,11 @@ const ToolBar = (props)=>{
   
       setMenuPosition({x: window.innerWidth-configRect.right, y: (topBarRect.y+topBar.offsetHeight)})  
 
-    }else if (showMenuAttention) {
-      const attention = document.getElementById('attention')
-      const attentionRect = attention.getBoundingClientRect()
+    }else if (showMenuAddContent) {
+      const addContent = document.getElementById('addContent')
+      const addContentRect = addContent.getBoundingClientRect()
   
-      setMenuPosition({x: window.innerWidth-attentionRect.right, y: (topBarRect.y+topBar.offsetHeight)})  
+      setMenuPosition({x: window.innerWidth-addContentRect.right, y: (topBarRect.y+topBar.offsetHeight)})  
 
     }else if (showMenuLogs) {
       const logs = document.getElementById('logs')
@@ -97,14 +97,14 @@ const ToolBar = (props)=>{
   
       setMenuPosition({x: window.innerWidth-logsRect.right, y: (topBarRect.y+topBar.offsetHeight)})  
 
-    }else if (showMenuSettings) {
-      const settings = document.getElementById('settings')
-      const settingsRect = settings.getBoundingClientRect()
+    }else if (showMenuBookContent) {
+      const bookContent = document.getElementById('bookContent')
+      const bookContentRect = bookContent.getBoundingClientRect()
   
-      setMenuPosition({x: window.innerWidth-settingsRect.right, y: (topBarRect.y+topBar.offsetHeight)})  
+      setMenuPosition({x: window.innerWidth-bookContentRect.right, y: (topBarRect.y+topBar.offsetHeight)})  
     }
     
-  }, [showMenuHome, showMenuConfig, showMenuAttention, showMenuLogs, showMenuSettings])
+  }, [showMenuHome, showMenuConfig, showMenuAddContent, showMenuLogs, showMenuBookContent])
 
   return (
     <div id='toolBar'>
@@ -120,9 +120,9 @@ const ToolBar = (props)=>{
           <a href="config"><span className='config'>Config</span></a>
         </li>
         
-        <li id='attention' onMouseEnter={()=>handleMouseEnter('attention')} onMouseLeave={()=>{handleMouseLeave('attention')}}
-        style={{backgroundColor: showMenuAttention? '#202020' : '#333'}}>
-          <a href="attention"><span className='attention'>Attention</span></a>
+        <li id='addContent' onMouseEnter={()=>handleMouseEnter('addContent')} onMouseLeave={()=>{handleMouseLeave('addContent')}}
+        style={{backgroundColor: showMenuAddContent? '#202020' : '#333'}}>
+          <a href="addContent"><span className='addContent'>اضافه کردن محتوا</span></a>
         </li>
         
         <li id='logs' onMouseEnter={()=>handleMouseEnter('logs')} onMouseLeave={()=>{handleMouseLeave('logs')}}
@@ -130,9 +130,9 @@ const ToolBar = (props)=>{
           <a href="logs"><span className='logs'>Logs</span></a>
         </li>
         
-        <li id='settings' onMouseEnter={()=>handleMouseEnter('settings')} onMouseLeave={()=>{handleMouseLeave('settings')}}
-        style={{backgroundColor: showMenuSettings? '#202020' : '#333'}}>
-          <a href="settings"><span className='settings'>Settings</span></a>
+        <li id='bookContent' onMouseEnter={()=>handleMouseEnter('bookContent')} onMouseLeave={()=>{handleMouseLeave('bookContent')}}
+        style={{backgroundColor: showMenuBookContent? '#202020' : '#333'}}>
+          <a href="bookContent"><span className='bookContent'>محتوای آموزشی</span></a>
         </li>
         
         <li className="left-float"><a className="green-tab" href="about"><span className='account'>Account</span></a></li>
@@ -154,8 +154,8 @@ const ToolBar = (props)=>{
           </ul>
         )}
         
-        {showMenuAttention && (
-          <ul className="contextMenuToolBar" onMouseEnter={()=>handleMouseEnterContextMenu('attention')} onMouseLeave={()=>handleMouseLeaveContextMenu('attention')} style={{ top: `${menuPosition.y}px`, right: `${menuPosition.x}px` }}>
+        {showMenuAddContent && (
+          <ul className="contextMenuToolBar" onMouseEnter={()=>handleMouseEnterContextMenu('addContent')} onMouseLeave={()=>handleMouseLeaveContextMenu('addContent')} style={{ top: `${menuPosition.y}px`, right: `${menuPosition.x}px` }}>
             <li className="menuItem" onClick={handleMenuItemClick}>item1</li>
             <li className="menuItem" onClick={handleMenuItemClick}>item2</li>
             <li className="menuItem" onClick={handleMenuItemClick}>item3</li>
@@ -170,8 +170,8 @@ const ToolBar = (props)=>{
           </ul>
         )}
               
-        {showMenuSettings && (
-          <ul className="contextMenuToolBar" onMouseEnter={()=>handleMouseEnterContextMenu('settings')} onMouseLeave={()=>handleMouseLeaveContextMenu('settings')} style={{ top: `${menuPosition.y}px`, right: `${menuPosition.x}px` }}>
+        {showMenuBookContent && (
+          <ul className="contextMenuToolBar" onMouseEnter={()=>handleMouseEnterContextMenu('bookContent')} onMouseLeave={()=>handleMouseLeaveContextMenu('bookContent')} style={{ top: `${menuPosition.y}px`, right: `${menuPosition.x}px` }}>
             <li className="menuItem" onClick={handleMenuItemClick}>item1</li>
             <li className="menuItem" onClick={handleMenuItemClick}>item2</li>
             <li className="menuItem" onClick={handleMenuItemClick}>item3</li>

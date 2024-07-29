@@ -196,7 +196,7 @@ code {
   border-color: aliceblue;
   margin: 0;
   z-index: 2;
-  width: 30vw;
+  /* width: 30vw; */
   padding: 0;
 }
 
@@ -264,4 +264,56 @@ ul, #tree-view {
 
 li{
     text-align: left;
+}
+
+
+
+
+#tree-view-box {
+  /* margin-top: 1rem; */
+  /* padding-bottom: 10rem; */
+  /* height: 100%;  */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+/* Custom Scrollbar Styles for WebKit Browsers */
+#tree-view-box::-webkit-scrollbar {
+  width: 12px; /* Width of the scrollbar */
+}
+
+#tree-view-box::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Background of the scrollbar track */
+}
+
+#tree-view-box::-webkit-scrollbar-thumb {
+  background: #888; /* Color of the scrollbar thumb */
+  border-radius: 6px; /* Rounded corners of the scrollbar thumb */
+}
+
+#tree-view-box::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Color of the scrollbar thumb when hovered */
+}
+
+/* Custom Scrollbar Styles for Firefox */
+#tree-view-box {
+  scrollbar-width: thin; /* Thin scrollbar */
+  scrollbar-color: #888 #f1f1f1; /* Color of the scrollbar thumb and track */
+}
+
+/* Custom Scrollbar Styles for Edge, IE, and other browsers */
+#tree-view-box::-ms-scrollbar {
+  width: 12px; /* Width of the scrollbar */
+}
+
+#tree-view-box::-ms-scrollbar-track {
+  background: #f1f1f1; /* Background of the scrollbar track */
+}
+
+#tree-view-box::-ms-scrollbar-thumb {
+  background: #888; /* Color of the scrollbar thumb */
+  border-radius: 6px; /* Rounded corners of the scrollbar thumb */
+}
+
+#tree-view-box::-ms-scrollbar-thumb:hover {
+  background: #555; /* Color of the scrollbar thumb when hovered */
 }

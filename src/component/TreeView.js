@@ -87,7 +87,68 @@ var ITEMS = [
         }
       ]
     }]
+  },
+  {
+    type:'network',
+    id: '13',
+    label: 'My Network',
+  },
+  {
+    type:'network',
+    id: '14',
+    label: 'My Network',
+  },
+  {
+    type:'network',
+    id: '15',
+    label: 'My Network',
+  },
+  {
+    type:'network',
+    id: '16',
+    label: 'My Network',
+  },
+  {
+    type:'network',
+    id: '17',
+    label: 'My Network',
+  },
+  {
+    type:'network',
+    id: '18',
+    label: 'My Network',
+  },
+  {
+    type:'network',
+    id: '19',
+    label: 'My Network',
+  },
+  {
+    type:'network',
+    id: '20',
+    label: 'My Network',
+  },
+  {
+    type:'network',
+    id: '21',
+    label: 'My Network',
+  },
+  {
+    type:'network',
+    id: '22',
+    label: 'My Network',
+  },
+  {
+    type:'network',
+    id: '23',
+    label: 'My Network',
+  },
+  {
+    type:'network',
+    id: '24',
+    label: 'My Network',
   }
+
 ];
 
 const findBiggestId = (items, currentMaxId = '0') => {
@@ -523,7 +584,7 @@ const removeHeightFromElements = () => {
       </div>
 
 
-      <Box id='tree-view-box' sx={{marginTop:1 , flexGrow: 1 }}>
+      <Box id='tree-view-box' sx={{marginTop:1, height: '-webkit-fill-available', flexGrow: 1 }}>
         <RichTreeView
           aria-label="icon expansion"
           sx={{ position: 'relative' }}

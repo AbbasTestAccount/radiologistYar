@@ -1,3 +1,40 @@
 #learning-page{
     display: flex;
 }
+/* Learning.css */
+.content-below-toolBar {
+  /* height: 100vh; */
+  display: flex;
+  flex-direction: column;
+}
+
+.split-pane {
+  /* height: 100%; */
+}
+
+.treeview-container {
+  /* height: 100%; */
+  overflow: auto; /* Allow scrolling if content overflows */
+}
+
+.learning-content {
+  height: 100%;
+  overflow: auto; /* Allow scrolling if content overflows */
+}
+
+/* Style for the resizer */
+.Resizer {
+  background: #555; /* Color of the resizer */
+  width: 5px; /* Width of the resizer */
+  cursor: col-resize; /* Cursor for resizing */
+  /* height: 100%; */
+  position: relative;
+  z-index: 1;
+}
+
+/* Change the resizer color when being dragged */
+.Resizer:hover,
+.Resizer:active {
+  background: #04AA6D;
+}
+  

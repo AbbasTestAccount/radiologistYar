@@ -1,6 +1,38 @@
 .add-book-content{
     width: -webkit-fill-available;
-    height: 300px;
+    /* height: 300px; */
     padding: 2% 15% 0px 15%;
 
 }
+
+.ck-editor__editable{
+    height: 75vh !important;
+}
+
+
+/* AddBookContent.css */
+
+.submit-button {
+  background: linear-gradient(to right, #43a047, #66bb6a);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 20px;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.submit-button:hover {
+  background: linear-gradient(to right, #66bb6a, #43a047);
+}
+
+.submit-button:active {
+  transform: scale(0.98);
+}
+  
+  

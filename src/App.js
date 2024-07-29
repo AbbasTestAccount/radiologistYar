@@ -16,10 +16,6 @@ function App() {
     const topBar = document.getElementById('topBar')
     const topBarRect = topBar.getBoundingClientRect()
     document.getElementById('content-under-toolBar').style.paddingTop = `${topBarRect.y+topBar.offsetHeight}px`
-    // document.getElementById('content-under-toolBar').style.height = `calc(100vh - ${topBarRect.y + topBar.offsetHeight}px)`
-    document.getElementsByClassName('Pane')[0].style.height = `calc(100vh - ${topBarRect.y + topBar.offsetHeight}px)`
-    document.getElementsByClassName('Pane')[1].style.height = `calc(100vh - ${topBarRect.y + topBar.offsetHeight}px)`
-    document.getElementsByClassName('SplitPane')[0].style.height = ''
     
     
   },[browserHeight])
@@ -49,7 +45,9 @@ function App() {
         <Router>
           <Route path='/home' component={Home}></Route>
           <Route path='/config' component={Test}></Route>
-          <Route path='/bookContent' component={Learning}></Route>
+          <Route path='/bookContent'>
+            <Learning browserHeight={browserHeight} ></Learning>
+          </Route>
           <Route path='/addContent' component={AddBookContent}></Route>
 
         </Router>

@@ -1,6 +1,6 @@
 import './App.css';
 import ToolBar from "./component/ToolBar";
-import Test from './component/Pages/Test';
+import Diagnosis from './component/Pages/Diagnosis';
 import Learning from './component/Pages/Learning';
 import AddBookContent from "./component/AddBookContent";
 import Home from "./component/Pages/Home";
@@ -45,7 +45,7 @@ function App() {
       <div id='content-under-toolBar'>
         <Router>
           <Route path='/home' component={Home}></Route>
-          <Route path='/config' component={Test}></Route>
+          <Route path='/diagnosis' component={Diagnosis}></Route>
           <Route path='/bookContent'>
             <Learning browserHeight={browserHeight} ></Learning>
           </Route>

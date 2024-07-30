@@ -1,7 +1,7 @@
 import './Learning.css'
 import TreeView from '../TreeView';
 import React, { useEffect } from "react";
-import Test from './Test';
+import Test from './Diagnosis';
 import SplitPane from "react-split-pane";
 
 

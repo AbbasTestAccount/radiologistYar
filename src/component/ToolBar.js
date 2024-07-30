@@ -4,7 +4,7 @@ import './ToolBar.css';
 const ToolBar = (props)=>{
 
   const [showMenuHome, setShowMenuHome] = useState(false);
-  const [showMenuConfig, setShowMenuConfig] = useState(false);
+  const [showMenuDiagnosis, setShowMenuDiagnosis] = useState(false);
   const [showMenuAddContent, setShowMenuAddContent] = useState(false);
   const [showMenuBookContentPdf, setShowMenuBookContentPdf] = useState(false);
   const [showMenuBookContent, setShowMenuBookContent] = useState(false);
@@ -27,8 +27,8 @@ const ToolBar = (props)=>{
         setShowMenuHome(showStatus);
         break;
       
-      case 'config':
-        setShowMenuConfig(showStatus);
+      case 'diagnosis':
+        setShowMenuDiagnosis(showStatus);
         break;
 
       case 'addContent':
@@ -79,11 +79,11 @@ const ToolBar = (props)=>{
   
       setMenuPosition({x: window.innerWidth-homeRect.right, y: (topBarRect.y+topBar.offsetHeight)})
 
-    }else if (showMenuConfig) {
-      const config = document.getElementById('config')
-      const configRect = config.getBoundingClientRect()
+    }else if (showMenuDiagnosis) {
+      const diagnosis = document.getElementById('diagnosis')
+      const diagnosisRect = diagnosis.getBoundingClientRect()
   
-      setMenuPosition({x: window.innerWidth-configRect.right, y: (topBarRect.y+topBar.offsetHeight)})  
+      setMenuPosition({x: window.innerWidth-diagnosisRect.right, y: (topBarRect.y+topBar.offsetHeight)})  
 
     }else if (showMenuAddContent) {
       const addContent = document.getElementById('addContent')
@@ -104,7 +104,7 @@ const ToolBar = (props)=>{
       setMenuPosition({x: window.innerWidth-bookContentRect.right, y: (topBarRect.y+topBar.offsetHeight)})  
     }
     
-  }, [showMenuHome, showMenuConfig, showMenuAddContent, showMenuBookContentPdf, showMenuBookContent])
+  }, [showMenuHome, showMenuDiagnosis, showMenuAddContent, showMenuBookContentPdf, showMenuBookContent])
 
   return (
     <div id='toolBar'>
@@ -115,14 +115,14 @@ const ToolBar = (props)=>{
           <a href="home"><span className='home'>Home</span></a>
         </li>
         
-        <li id='config' onMouseEnter={()=>handleMouseEnter('config')} onMouseLeave={()=>{handleMouseLeave('config')}}
-        style={{backgroundColor: showMenuConfig? '#202020' : '#333'}}>
-          <a href="config"><span className='config'>Config</span></a>
+        <li id='diagnosis' onMouseEnter={()=>handleMouseEnter('diagnosis')} onMouseLeave={()=>{handleMouseLeave('diagnosis')}}
+        style={{backgroundColor: showMenuDiagnosis? '#202020' : '#333'}}>
+          <a href="diagnosis"><span className='diagnosis'>Diagnosis</span></a>
         </li>
         
         <li id='addContent' onMouseEnter={()=>handleMouseEnter('addContent')} onMouseLeave={()=>{handleMouseLeave('addContent')}}
         style={{backgroundColor: showMenuAddContent? '#202020' : '#333'}}>
-          <a href="addContent"><span className='addContent'>اضافه کردن محتوا</span></a>
+          <a href="addContent"><span className='addContent'>Add Content</span></a>
         </li>
         
         <li id='bookContentPdf' onMouseEnter={()=>handleMouseEnter('bookContentPdf')} onMouseLeave={()=>{handleMouseLeave('bookContentPdf')}}
@@ -146,8 +146,8 @@ const ToolBar = (props)=>{
           </ul>
         )}
         
-        {showMenuConfig && (
-          <ul className="contextMenuToolBar" onMouseEnter={()=>handleMouseEnterContextMenu('config')} onMouseLeave={()=>handleMouseLeaveContextMenu('config')} style={{ top: `${menuPosition.y}px`, right: `${menuPosition.x}px` }}>
+        {showMenuDiagnosis && (
+          <ul className="contextMenuToolBar" onMouseEnter={()=>handleMouseEnterContextMenu('diagnosis')} onMouseLeave={()=>handleMouseLeaveContextMenu('diagnosis')} style={{ top: `${menuPosition.y}px`, right: `${menuPosition.x}px` }}>
             <li className="menuItem" onClick={handleMenuItemClick}>item1</li>
             <li className="menuItem" onClick={handleMenuItemClick}>item2</li>
             <li className="menuItem" onClick={handleMenuItemClick}>item3</li>

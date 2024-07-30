@@ -1,9 +1,11 @@
 import './Test.css';
 import React, { useEffect, useState } from "react";
+import { ThreeDot } from "react-loading-indicators";
 
-function PdfViewer() {
+function Test() {
     const [loadAttempts, setLoadAttempts] = useState(0);
     const [loaded, setLoaded] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const handleContextMenu = (e) => {
@@ -23,6 +25,7 @@ function PdfViewer() {
                     const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
                     if (iframeDocument && iframeDocument.body && iframeDocument.body.innerHTML.length > 0) {
                         setLoaded(true);
+                        setLoading(false);
                     } else {
                         throw new Error("Iframe not loaded");
                     }
@@ -60,16 +63,24 @@ function PdfViewer() {
 
     return (
         <div className="test">
-            <iframe
-                className='pdfViewer'
-                src={`https://docs.google.com/gview?url=https://blog.faradars.org/wp-content/uploads/2018/12/Integral-CheatSheet-BFCS0009.pdf&embedded=true&attempt=${loadAttempts}`}
-                loading='lazy'
-                title='pdf'
-                sandbox="allow-scripts allow-same-origin"
-                onLoad={() => setLoaded(true)}
-            />
+            {loading && <div className="loadingSpinner">
+                <ThreeDot variant="bob" color="#32cd32" size="medium" text="" textColor="" />    
+            </div>}
+            <div className="iframeContainer">
+                <iframe
+                    className='pdfViewer'
+                    src={`https://docs.google.com/gview?url=https://blog.faradars.org/wp-content/uploads/2018/12/Integral-CheatSheet-BFCS0009.pdf&embedded=true&attempt=${loadAttempts}`}
+                    loading='lazy'
+                    title='pdf'
+                    sandbox="allow-scripts allow-same-origin"
+                    onLoad={() => {
+                        setLoaded(true);
+                        setLoading(false);
+                    }}
+                />
+            </div>
         </div>
     );
 }
 
-export default PdfViewer;
+export default Test;

@@ -6,7 +6,7 @@ const ToolBar = (props)=>{
   const [showMenuHome, setShowMenuHome] = useState(false);
   const [showMenuConfig, setShowMenuConfig] = useState(false);
   const [showMenuAddContent, setShowMenuAddContent] = useState(false);
-  const [showMenuLogs, setShowMenuLogs] = useState(false);
+  const [showMenuBookContentPdf, setShowMenuBookContentPdf] = useState(false);
   const [showMenuBookContent, setShowMenuBookContent] = useState(false);
 
   const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 });
@@ -35,8 +35,8 @@ const ToolBar = (props)=>{
         setShowMenuAddContent(showStatus);
         break;
 
-      case 'logs':
-        setShowMenuLogs(showStatus);
+      case 'bookContentPdf':
+        setShowMenuBookContentPdf(showStatus);
         break;
 
       case 'bookContent':
@@ -91,11 +91,11 @@ const ToolBar = (props)=>{
   
       setMenuPosition({x: window.innerWidth-addContentRect.right, y: (topBarRect.y+topBar.offsetHeight)})  
 
-    }else if (showMenuLogs) {
-      const logs = document.getElementById('logs')
-      const logsRect = logs.getBoundingClientRect()
+    }else if (showMenuBookContentPdf) {
+      const bookContentPdf = document.getElementById('bookContentPdf')
+      const bookContentPdfRect = bookContentPdf.getBoundingClientRect()
   
-      setMenuPosition({x: window.innerWidth-logsRect.right, y: (topBarRect.y+topBar.offsetHeight)})  
+      setMenuPosition({x: window.innerWidth-bookContentPdfRect.right, y: (topBarRect.y+topBar.offsetHeight)})  
 
     }else if (showMenuBookContent) {
       const bookContent = document.getElementById('bookContent')
@@ -104,7 +104,7 @@ const ToolBar = (props)=>{
       setMenuPosition({x: window.innerWidth-bookContentRect.right, y: (topBarRect.y+topBar.offsetHeight)})  
     }
     
-  }, [showMenuHome, showMenuConfig, showMenuAddContent, showMenuLogs, showMenuBookContent])
+  }, [showMenuHome, showMenuConfig, showMenuAddContent, showMenuBookContentPdf, showMenuBookContent])
 
   return (
     <div id='toolBar'>
@@ -125,14 +125,14 @@ const ToolBar = (props)=>{
           <a href="addContent"><span className='addContent'>اضافه کردن محتوا</span></a>
         </li>
         
-        <li id='logs' onMouseEnter={()=>handleMouseEnter('logs')} onMouseLeave={()=>{handleMouseLeave('logs')}}
-        style={{backgroundColor: showMenuLogs? '#202020' : '#333'}}>
-          <a href="logs"><span className='logs'>Logs</span></a>
+        <li id='bookContentPdf' onMouseEnter={()=>handleMouseEnter('bookContentPdf')} onMouseLeave={()=>{handleMouseLeave('bookContentPdf')}}
+        style={{backgroundColor: showMenuBookContentPdf? '#202020' : '#333'}}>
+          <a href="bookContentPdf"><span className='bookContentPdf'>Educational content(pdf)</span></a>
         </li>
         
         <li id='bookContent' onMouseEnter={()=>handleMouseEnter('bookContent')} onMouseLeave={()=>{handleMouseLeave('bookContent')}}
         style={{backgroundColor: showMenuBookContent? '#202020' : '#333'}}>
-          <a href="bookContent"><span className='bookContent'>محتوای آموزشی</span></a>
+          <a href="bookContent"><span className='bookContent'>Educational content(html)</span></a>
         </li>
         
         <li className="left-float"><a className="green-tab" href="about"><span className='account'>Account</span></a></li>
@@ -162,8 +162,8 @@ const ToolBar = (props)=>{
           </ul>
         )}      
         
-        {showMenuLogs && (
-          <ul className="contextMenuToolBar" onMouseEnter={()=>handleMouseEnterContextMenu('logs')} onMouseLeave={()=>handleMouseLeaveContextMenu('logs')} style={{ top: `${menuPosition.y}px`, right: `${menuPosition.x}px` }}>
+        {showMenuBookContentPdf && (
+          <ul className="contextMenuToolBar" onMouseEnter={()=>handleMouseEnterContextMenu('bookContentPdf')} onMouseLeave={()=>handleMouseLeaveContextMenu('bookContentPdf')} style={{ top: `${menuPosition.y}px`, right: `${menuPosition.x}px` }}>
             <li className="menuItem" onClick={handleMenuItemClick}>item1</li>
             <li className="menuItem" onClick={handleMenuItemClick}>item2</li>
             <li className="menuItem" onClick={handleMenuItemClick}>item3</li>

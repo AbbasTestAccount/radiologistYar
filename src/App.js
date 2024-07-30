@@ -50,7 +50,7 @@ function App() {
             <Learning browserHeight={browserHeight} ></Learning>
           </Route>
           <Route path='/addContent' component={AddBookContent}></Route>
-          <Route path='/logs' component={LearningPdfStyle}></Route>
+          <Route path='/bookContentPdf' component={LearningPdfStyle}></Route>
 
         </Router>
       </div>

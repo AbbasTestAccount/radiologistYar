@@ -4,6 +4,7 @@ import Test from './component/Pages/Test';
 import Learning from './component/Pages/Learning';
 import AddBookContent from "./component/AddBookContent";
 import Home from "./component/Pages/Home";
+import LearningPdfStyle from "./component/Pages/LearningPdfStyle"
 import React, { useEffect, useState } from 'react';
 
 import { Route, Router } from "wouter";
@@ -49,6 +50,7 @@ function App() {
             <Learning browserHeight={browserHeight} ></Learning>
           </Route>
           <Route path='/addContent' component={AddBookContent}></Route>
+          <Route path='/logs' component={LearningPdfStyle}></Route>
 
         </Router>
       </div>

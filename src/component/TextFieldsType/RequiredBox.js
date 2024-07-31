@@ -17,47 +17,39 @@ export default function FormPropsTextFields(props) {
   };
 
   return (
-    <Box
-      component="form"
-      sx={{
-        '& .MuiTextField-root': { m: 1, width: '25ch' },
-      }}
-      noValidate
-      autoComplete="on"
-    >
-      <div>
-        <TextField
-          required
-          id="outlined-required"
-          label="Required"
-          value={props.requiredValue}
-          onChange={(e) => props.setRequiredValue(e.target.value)}
-          error={props.isRequiredEmpty}
-          helperText={props.isRequiredEmpty ? 'This field is required' : ''}
-          sx={{
-            '& .MuiOutlinedInput-root': {
-              '& fieldset': {
-                borderColor: props.isRequiredEmpty ? 'red' : '',
-              },
+    <div>
+      <TextField
+        required
+        id="outlined-required"
+        label="Required"
+        value={props.requiredValue}
+        onChange={(e) => props.setRequiredValue(e.target.value)}
+        error={props.isRequiredEmpty}
+        helperText={props.isRequiredEmpty ? 'This field is required' : ''}
+        sx={{
+          '& .MuiOutlinedInput-root': {
+            '& fieldset': {
+              borderColor: props.isRequiredEmpty ? 'red' : '',
             },
-          }}
-        />
+          },
+        }}
+      />
 
-        <TextField
-          id="outlined-number"
-          label="Number"
-          type="number"
-          value={numberValue}
-          onChange={handleNumberChange}
-          inputProps={{
-            min: 0,
-            max: 100,
-          }}
-          InputProps={{
-            endAdornment: <InputAdornment position="end" style={{ paddingLeft: '5px' }}>Years</InputAdornment>,
-          }}
-        />
-      </div>
-    </Box>
+      <TextField
+        id="outlined-number"
+        label="Number"
+        type="number"
+        value={numberValue}
+        onChange={handleNumberChange}
+        inputProps={{
+          min: 0,
+          max: 100,
+        }}
+        InputProps={{
+          endAdornment: <InputAdornment position="end" style={{ paddingLeft: '5px' }}>Years</InputAdornment>,
+        }}
+      />
+      
+    </div>
   );
 }

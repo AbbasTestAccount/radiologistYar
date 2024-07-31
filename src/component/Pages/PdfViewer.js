@@ -22,6 +22,10 @@ function Test() {
             const iframe = document.querySelector('.pdfViewer');
             if (iframe && iframe.contentWindow) {
                 try {
+                    // let pdfIframeWindow = window.frames.iframe1
+                    // let elementToHide = pdfIframeWindow.document.querySelector('.ndfHFb-c4YZDc-Wrql6b')
+                    // elementToHide.style.display = 'none'
+
                     const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
                     if (iframeDocument && iframeDocument.body && iframeDocument.body.innerHTML.length > 0) {
                         setLoaded(true);
@@ -68,6 +72,7 @@ function Test() {
             </div>}
             <div className="iframeContainer">
                 <iframe
+                    name='iframe1'
                     className='pdfViewer'
                     src={`https://docs.google.com/gview?url=https://blog.faradars.org/wp-content/uploads/2018/12/Integral-CheatSheet-BFCS0009.pdf&embedded=true&attempt=${loadAttempts}`}
                     loading='lazy'

@@ -5,6 +5,8 @@ import AutocompleteBox from "../TextFieldsType/AutocompleteBox"
 import RequiredBox from "../TextFieldsType/RequiredBox"
 import NumberedBox from "../TextFieldsType/NumberedBox"
 import TextArea from "../TextFieldsType/TextArea"
+import Box from '@mui/material/Box';
+import DatePicker from "../TextFieldsType/DatePicker"
 
 
 
@@ -36,10 +38,17 @@ function Diagnosis() {
       <MyStepper steps={steps} activeStep={activeStep}></MyStepper>
       <hr></hr>
       <div>
-        <AutocompleteBox/>
+        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2 }}>
         <RequiredBox isRequiredEmpty={isRequiredEmpty} requiredValue={requiredValue} setRequiredValue={setRequiredValue}></RequiredBox>
         <NumberedBox></NumberedBox>
+
+        <AutocompleteBox/>
+        <DatePicker></DatePicker>
+
         <TextArea></TextArea>
+            
+        </Box>
+        
         <br></br>
         <button type="submit" onClick={checkRequiredTextField}>Submit</button>
 

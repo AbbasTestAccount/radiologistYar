@@ -38,7 +38,7 @@ export default function Textarea() {
 
   const handleChange = (event) => {
     setValue(event.target.value);
-    console.log(event.target.value); // Updated to log the current value
+    console.log(event.target.value);
   };
 
   return (
@@ -46,7 +46,7 @@ export default function Textarea() {
       placeholder="Other descriptions..."
       value={value}
       onChange={handleChange}
-      rows={3} // Set a fixed number of rows
+      rows={3}
     />
   );
 }

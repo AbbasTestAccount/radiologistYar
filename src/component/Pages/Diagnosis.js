@@ -20,32 +20,33 @@ function Diagnosis() {
   const [activeStep, setActiveStep] = useState(0);
   const [firstnameValue, setFirstNameValue] = useState('');
   const [lastnameValue, setLastNameValue] = useState('');
+  const [nationalCodeValue, setNationalCodeValue] = useState('');
   const [ageValue, setAgeValue] = useState(null);
-  const [nationalCodeValue, setNationalCodeValue] = useState(null);
   const [visitDate, setVisitDate] = useState();
   const [radiologyType, setRadiologyType] = useState();
   const [otherDescription, setOtherDescription] = useState();
-  const [isRequiredEmpty, setIsRequiredEmpty] = useState(false);
+
+
+  const [isNameRequiredEmpty, setIsNameRequiredEmpty] = useState(false);
+  const [isLastNameRequiredEmpty, setIsLastNameRequiredEmpty] = useState(false);
+  const [isNationalCodeRequiredEmpty, setIsNationalCodeRequiredEmpty] = useState(false);
+  
+  
   const [hasSubmitted, setHasSubmitted] = useState(false);
+  
+  
   const [padding, setPadding] = useState(0);
 
+  const calculatePadding = () => {
+    const containerWidth = window.innerWidth;
+    if (containerWidth>1200) {
+      setPadding((containerWidth-1200)/2);
+    }else{
+      setPadding(0);
+    }
+  };
 
   useEffect(() => {
-    const calculatePadding = () => {
-      const containerWidth = window.innerWidth;
-      const boxWidth = 300; // Width of each box
-      const gap = 16; // Gap between boxes
-
-      const maxBoxesPerRow = 3;
-      const totalBoxWidth = boxWidth * maxBoxesPerRow + gap * (maxBoxesPerRow - 1);
-      if (containerWidth>1200) {
-        setPadding((containerWidth-1200)/2);
-      }else{
-        setPadding(0);
-
-      }
-    };
-
     calculatePadding();
     window.addEventListener('resize', calculatePadding);
 
@@ -55,11 +56,30 @@ function Diagnosis() {
   const checkRequiredTextField = (event) => {
     event.preventDefault();
     setHasSubmitted(true);
+
     if (firstnameValue.trim() === '') {
-      setIsRequiredEmpty(true);
+      setIsNameRequiredEmpty(true);
     } else {
-      setIsRequiredEmpty(false);
+      setIsNameRequiredEmpty(false);
     }
+
+    if (lastnameValue.trim() === '') {
+      setIsLastNameRequiredEmpty(true);
+    } else {
+      setIsLastNameRequiredEmpty(false);
+    }
+
+    if (nationalCodeValue === '') {
+      setIsNationalCodeRequiredEmpty(true);
+    } else {
+      if (nationalCodeValue.length !== 10) {
+        console.error("nationalCodeValue is lower than 10, it's :", nationalCodeValue.length);
+        setIsNationalCodeRequiredEmpty(true);
+      }else{
+        setIsNationalCodeRequiredEmpty(false);
+      }
+    }
+
   };
 
   return (
@@ -81,22 +101,28 @@ function Diagnosis() {
       >
         <Box sx={{ width: 300 }}>
           <RequiredBox
-            isRequiredEmpty={hasSubmitted && isRequiredEmpty}
+            label={'First Name'}
+            isRequiredEmpty={hasSubmitted && isNameRequiredEmpty}
             requiredValue={firstnameValue}
             setRequiredValue={setFirstNameValue}
-            setIsRequiredEmpty={setIsRequiredEmpty}
+            setIsRequiredEmpty={setIsNameRequiredEmpty}
           />
         </Box>
         <Box sx={{ width: 300 }}>
           <RequiredBox
-            isRequiredEmpty={hasSubmitted && isRequiredEmpty}
+            label={'Last Name'}
+            isRequiredEmpty={hasSubmitted && isLastNameRequiredEmpty}
             requiredValue={lastnameValue}
             setRequiredValue={setLastNameValue}
-            setIsRequiredEmpty={setIsRequiredEmpty}
+            setIsRequiredEmpty={setIsLastNameRequiredEmpty}
           />
         </Box>
         <Box sx={{ width: 300 }}>
-          <NationalCodeBox/>
+          <NationalCodeBox 
+            nationalCodeValue={nationalCodeValue}
+            setNationalCodeValue={setNationalCodeValue}
+            isRequiredEmpty={hasSubmitted && isNationalCodeRequiredEmpty}
+          />
         </Box>
         <Box sx={{ width: 300 }}>
           <NumberedBox />

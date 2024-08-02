@@ -1,34 +1,39 @@
 import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
-import { useState } from 'react';
 
 export default function NationalCodeBox(props) {
-  const [numberValue, setNumberValue] = useState('');
 
   const handleNumberChange = (event) => {
-    const value = event.target.value;
+    const value = event.target.value.replace(/\s+|\t+/g, '');
     // Allow only numeric values
     if (/^\d*$/.test(value) && value.length <= 10) {
-      setNumberValue(value);
+      props.setNationalCodeValue(value);
     }
   };
 
   return (
     <TextField
+      required
       id="outlined-number"
       label="10-Digit Number"
-      type="text" // Using text type to allow control over the input
-      value={numberValue}
+      type="text"
+      value={props.nationalCodeValue}
       onChange={handleNumberChange}
+      error={props.isRequiredEmpty}
       inputProps={{
-        maxLength: 10, // Enforce 10 digits in the input
+        maxLength: 10,
       }}
       InputProps={{
         endAdornment: <InputAdornment position="end">Digits</InputAdornment>,
       }}
       sx={{
-        width: '100%'
+        width:'100%',
+        '& .MuiOutlinedInput-root': {
+          '& fieldset': {
+            borderColor: props.isRequiredEmpty ? 'red' : '',
+          },
+        },
       }}
     />
   );

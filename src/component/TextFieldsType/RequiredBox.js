@@ -16,7 +16,7 @@ export default function RequiredBox(props) {
       <TextField
         required
         id="outlined-required"
-        label="Required"
+        label={props.label}
         value={props.requiredValue}
         onChange={handleChange}
         error={props.isRequiredEmpty}

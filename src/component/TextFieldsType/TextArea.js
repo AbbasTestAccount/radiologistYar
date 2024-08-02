@@ -33,19 +33,14 @@ const StyledTextarea = styled('textarea')(
 `,
 );
 
-export default function Textarea() {
-  const [value, setValue] = React.useState('');
-
-  const handleChange = (event) => {
-    setValue(event.target.value);
-    console.log(event.target.value);
-  };
-
+export default function Textarea(props) {
   return (
     <StyledTextarea
       placeholder="Other descriptions..."
-      value={value}
-      onChange={handleChange}
+      value={props.otherDescription}
+      onChange={(event, newValue) => {
+        props.setOtherDescription(newValue);
+      }}
       rows={3}
     />
   );

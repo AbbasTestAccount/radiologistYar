@@ -1,29 +1,31 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
-import { useState } from 'react';
 
 export default function FormPropsTextFields(props) {
-  const [numberValue, setNumberValue] = useState('');
-
-
-
   const handleNumberChange = (event) => {
-    const value = event.target.value;
+    const value = event.target.value.replace(/[^\d]/g, ''); // Remove non-numeric characters
     if (value === '' || (Number(value) >= 0 && Number(value) <= 100)) {
-      setNumberValue(value);
+      props.setAgeValue(value);
+    }
+  };
+
+  const handlePaste = (event) => {
+    const paste = event.clipboardData.getData('text');
+    if (!/^\d+$/.test(paste)) {
+      event.preventDefault();
     }
   };
 
   return (
-
     <TextField
       id="outlined-number"
-      label="Number"
-      type="number"
-      value={numberValue}
+      label="Age"
+      type="text"
+      value={props.ageValue}
       onChange={handleNumberChange}
+      onPaste={handlePaste}
+      error={props.isRequiredEmpty}
       inputProps={{
         min: 0,
         max: 100,
@@ -32,7 +34,7 @@ export default function FormPropsTextFields(props) {
         endAdornment: <InputAdornment position="end" style={{ paddingLeft: '5px' }}>Years</InputAdornment>,
       }}
       sx={{
-        width:'100%'
+        width: '100%',
       }}
     />
   );

@@ -9,6 +9,9 @@ import Box from '@mui/material/Box';
 import DatePicker from "../TextFieldsType/DatePicker";
 import NationalCodeBox from '../TextFieldsType/NationalCodeBox'
 import '../submitBtn.css'
+import dayjs from 'dayjs';
+import { Alert } from '@mui/material';
+
 
 const steps = [
   "Entering Patient Information",
@@ -21,15 +24,19 @@ function Diagnosis() {
   const [firstnameValue, setFirstNameValue] = useState('');
   const [lastnameValue, setLastNameValue] = useState('');
   const [nationalCodeValue, setNationalCodeValue] = useState('');
-  const [ageValue, setAgeValue] = useState(null);
-  const [visitDate, setVisitDate] = useState();
-  const [radiologyType, setRadiologyType] = useState();
+  const [ageValue, setAgeValue] = useState('');
+  const [visitDate, setVisitDate] = useState(dayjs());
+  const [radiologyType, setRadiologyType] = useState(null);
   const [otherDescription, setOtherDescription] = useState();
 
 
   const [isNameRequiredEmpty, setIsNameRequiredEmpty] = useState(false);
   const [isLastNameRequiredEmpty, setIsLastNameRequiredEmpty] = useState(false);
   const [isNationalCodeRequiredEmpty, setIsNationalCodeRequiredEmpty] = useState(false);
+  const [isAgeValueRequiredEmpty, setIsAgeValueRequiredEmpty] = useState(false);
+  const [isRadiologyTypeRequiredEmpty, setIsRadiologyTypeRequiredEmpty] = useState(false);
+
+  const [nationalCodeValueLength, setNationalCodeValueLength] = useState(10)
   
   
   const [hasSubmitted, setHasSubmitted] = useState(false);
@@ -73,14 +80,38 @@ function Diagnosis() {
       setIsNationalCodeRequiredEmpty(true);
     } else {
       if (nationalCodeValue.length !== 10) {
+        setNationalCodeValueLength(nationalCodeValue.length)
         console.error("nationalCodeValue is lower than 10, it's :", nationalCodeValue.length);
-        setIsNationalCodeRequiredEmpty(true);
+        setIsNationalCodeRequiredEmpty(false);
       }else{
+        setNationalCodeValueLength(10)
         setIsNationalCodeRequiredEmpty(false);
       }
     }
 
+    if (ageValue === '') {
+      setIsAgeValueRequiredEmpty(true);
+    } else {
+      setIsAgeValueRequiredEmpty(false);
+    }
+
+    if (radiologyType === null) {
+      setIsRadiologyTypeRequiredEmpty(true);
+    } else {
+      setIsRadiologyTypeRequiredEmpty(false);
+    }
+    
+
   };
+
+  useEffect(()=>{
+    if(visitDate){
+        console.log(`${visitDate.$y} ${visitDate.$M + 1} ${visitDate.$D} `);
+    }else{
+        console.log("null value !!");
+    }
+  },[visitDate])
+  
 
   return (
     <div className='Diagnosis-page'>
@@ -99,6 +130,7 @@ function Diagnosis() {
           paddingRight: `${padding}px`,
         }}
       >
+        
         <Box sx={{ width: 300 }}>
           <RequiredBox
             label={'First Name'}
@@ -108,6 +140,7 @@ function Diagnosis() {
             setIsRequiredEmpty={setIsNameRequiredEmpty}
           />
         </Box>
+        
         <Box sx={{ width: 300 }}>
           <RequiredBox
             label={'Last Name'}
@@ -117,27 +150,68 @@ function Diagnosis() {
             setIsRequiredEmpty={setIsLastNameRequiredEmpty}
           />
         </Box>
+        
         <Box sx={{ width: 300 }}>
-          <NationalCodeBox 
+          <NationalCodeBox
             nationalCodeValue={nationalCodeValue}
             setNationalCodeValue={setNationalCodeValue}
-            isRequiredEmpty={hasSubmitted && isNationalCodeRequiredEmpty}
+            isRequiredEmpty={hasSubmitted && isNationalCodeRequiredEmpty && nationalCodeValueLength===10}
           />
         </Box>
+
         <Box sx={{ width: 300 }}>
-          <NumberedBox />
+          <NumberedBox
+            ageValue={ageValue} 
+            setAgeValue={setAgeValue}
+            isRequiredEmpty={hasSubmitted && isAgeValueRequiredEmpty}/>
+        </Box>
+
+        <Box sx={{ width: 300 }}>
+          <AutocompleteBox 
+            radiologyType={radiologyType}
+            setRadiologyType={setRadiologyType}
+            isRequiredEmpty={hasSubmitted && isRadiologyTypeRequiredEmpty}/>
         </Box>
         <Box sx={{ width: 300 }}>
-          <AutocompleteBox />
+          <DatePicker 
+            visitDate={visitDate}
+            setVisitDate={setVisitDate}/>
         </Box>
-        <Box sx={{ width: 300 }}>
-          <DatePicker />
-        </Box>
-        <TextArea />
+        <TextArea otherDescription={otherDescription} setOtherDescription={setOtherDescription}/>
       </Box>
       <br></br>
       <button id='submitBtn' type="submit" onClick={checkRequiredTextField}>Submit</button>
 
+      <br></br>
+      <br></br>
+
+      {isNameRequiredEmpty
+        ? <Alert severity="error">First Name is Empty</Alert>:null
+      }
+      
+      {isLastNameRequiredEmpty
+        ? <Alert severity="error">Last Name is Empty</Alert>:null
+      }
+      
+
+      {nationalCodeValueLength!==10
+        ? <Alert severity="error">national Code is lower than 10</Alert>:null
+      }
+
+      {isNationalCodeRequiredEmpty
+        ? <Alert severity="error">National Code is Empty</Alert>:null
+      }
+
+      {isAgeValueRequiredEmpty
+        ? <Alert severity="error">Age is Empty</Alert>:null
+      }
+
+      {isRadiologyTypeRequiredEmpty
+        ? <Alert severity="error">Radiology Type is Empty</Alert>:null
+      }
+
+
+      
     </div>
   );
 }

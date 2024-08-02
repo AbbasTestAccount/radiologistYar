@@ -16,7 +16,7 @@ export default function NationalCodeBox(props) {
     <TextField
       required
       id="outlined-number"
-      label="10-Digit Number"
+      label="National Code"
       type="text"
       value={props.nationalCodeValue}
       onChange={handleNumberChange}

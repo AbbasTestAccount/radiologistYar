@@ -1,0 +1,58 @@
+#submitBtn {
+  position: relative;
+  color: #04AA6D;
+  text-decoration: none;
+  font-size: 2em;
+  display: inline-block;
+  text-transform: uppercase;
+  padding: 0.5em 2em;
+  border: 2px solid #04AA6D;
+  background: transparent;
+  overflow: hidden;
+  transition: color 0.3s, padding 0.3s;
+  margin-top: 20px;
+}
+
+#submitBtn::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 100%;
+  bottom: 0;
+  background: #04AA6D;
+  transition: left 0.3s, right 0.3s;
+  z-index: -1;
+}
+
+#submitBtn::after {
+  content: "";
+  display: inline-block;
+  background-image: url("https://cdn-icons-png.flaticon.com/128/109/109617.png");
+  position: absolute;
+  top: 0;
+  right: -2em; /* Initially hide the icon */
+  width: 1.5em;
+  height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: right 0.3s;
+  z-index: -1;
+}
+
+#submitBtn:hover {
+  color: white;
+  padding: 0.5em 3.5em 0.5em 0.5em;
+  cursor: pointer;
+}
+
+#submitBtn:hover::before {
+  left: 0;
+  right: 0;
+}
+
+#submitBtn:hover::after {
+  right: 0.5em; /* Bring the icon inside when hovered */
+}

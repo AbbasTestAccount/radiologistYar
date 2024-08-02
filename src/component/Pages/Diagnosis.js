@@ -8,6 +8,8 @@ import TextArea from "../TextFieldsType/TextArea";
 import Box from '@mui/material/Box';
 import DatePicker from "../TextFieldsType/DatePicker";
 import NationalCodeBox from '../TextFieldsType/NationalCodeBox'
+import '../submitBtn.css'
+
 const steps = [
   "Entering Patient Information",
   "Complete CheckBox",
@@ -74,7 +76,7 @@ function Diagnosis() {
           <TextArea />
         </Box>
         <br></br>
-        <button type="submit" onClick={checkRequiredTextField}>Submit</button>
+        <button id='submitBtn' type="submit" onClick={checkRequiredTextField}>Submit</button>
       </div>
     </div>
   );

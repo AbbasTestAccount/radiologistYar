@@ -14,7 +14,7 @@ function AutocompleteBox() {
       disablePortal
       id="combo-box-demo"
       options={radiologyTypes}
-      sx={{ width: 300 }}
+      sx={{ width: '100%' }}
       value={radiologyType}
       onChange={(event, newValue) => {
         setRadiologyType(newValue);

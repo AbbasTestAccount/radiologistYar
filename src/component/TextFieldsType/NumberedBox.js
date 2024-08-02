@@ -17,30 +17,23 @@ export default function FormPropsTextFields(props) {
   };
 
   return (
-    <Box
-      component="form"
-      sx={{
-        '& .MuiTextField-root': { m: 1, width: '25ch' },
+
+    <TextField
+      id="outlined-number"
+      label="Number"
+      type="number"
+      value={numberValue}
+      onChange={handleNumberChange}
+      inputProps={{
+        min: 0,
+        max: 100,
       }}
-      noValidate
-      autoComplete="on"
-    >
-      <div>
-        <TextField
-          id="outlined-number"
-          label="Number"
-          type="number"
-          value={numberValue}
-          onChange={handleNumberChange}
-          inputProps={{
-            min: 0,
-            max: 100,
-          }}
-          InputProps={{
-            endAdornment: <InputAdornment position="end" style={{ paddingLeft: '5px' }}>Years</InputAdornment>,
-          }}
-        />
-      </div>
-    </Box>
+      InputProps={{
+        endAdornment: <InputAdornment position="end" style={{ paddingLeft: '5px' }}>Years</InputAdornment>,
+      }}
+      sx={{
+        width:'100%'
+      }}
+    />
   );
 }

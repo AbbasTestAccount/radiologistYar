@@ -175,7 +175,9 @@ return (
             <NationalCodeBox
                 nationalCodeValue={nationalCodeValue}
                 setNationalCodeValue={setNationalCodeValue}
-                isRequiredEmpty={hasSubmitted && isNationalCodeRequiredEmpty && nationalCodeValueLength === 10}
+                isRequiredEmpty={hasSubmitted && isNationalCodeRequiredEmpty && nationalCodeValueLength !== 10}
+                setNationalCodeValueLength={setNationalCodeValueLength}
+
             />
             </Box>
 
@@ -212,7 +214,7 @@ return (
           ? <Alert className='alert alert-enter' severity="error">Last Name is Empty</Alert> : null
         }
 
-        {nationalCodeValueLength !== 10
+        {hasSubmitted && nationalCodeValueLength !== 10
           ? <Alert className='alert alert-enter' severity="error">National Code is lower than 10</Alert> : null
         }
 

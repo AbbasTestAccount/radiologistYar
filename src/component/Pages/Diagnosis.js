@@ -4,11 +4,21 @@ import React, { useState, useEffect } from "react";
 import '../submitBtn.css'
 import dayjs from 'dayjs';
 import DiagEnterPatient from './Diagnosis/DiagEnterPatient';
+import Checklist from './Diagnosis/CheckList';
+import { CssBaseline } from '@mui/material';
+
 
 const steps = [
   "Entering Patient Information",
   "Complete CheckBox",
   "Considerations",
+];
+const items = [
+  'Item 1',
+  'Item 2',
+  'Item 3',
+  'Item 4',
+  'Item 5'
 ];
 
 function Diagnosis() {
@@ -27,7 +37,7 @@ function Diagnosis() {
   const [isAgeValueRequiredEmpty, setIsAgeValueRequiredEmpty] = useState(false);
   const [isRadiologyTypeRequiredEmpty, setIsRadiologyTypeRequiredEmpty] = useState(false);
 
-  const [nationalCodeValueLength, setNationalCodeValueLength] = useState(10);
+  const [nationalCodeValueLength, setNationalCodeValueLength] = useState(0);
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [padding, setPadding] = useState(0);
 
@@ -70,6 +80,10 @@ function Diagnosis() {
           padding = {padding}
           setPadding = {setPadding}
         />
+      :null}
+
+      {activeStep === 1?
+        <Checklist items={items} />
       :null}
 
 

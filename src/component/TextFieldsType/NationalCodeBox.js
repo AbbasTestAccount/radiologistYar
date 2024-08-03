@@ -4,12 +4,15 @@ import InputAdornment from '@mui/material/InputAdornment';
 
 export default function NationalCodeBox(props) {
 
+
   const handleNumberChange = (event) => {
     const value = event.target.value.replace(/\s+|\t+/g, '');
     // Allow only numeric values
     if (/^\d*$/.test(value) && value.length <= 10) {
       props.setNationalCodeValue(value);
+      props.setNationalCodeValueLength(value.length)
     }
+
   };
 
   return (
@@ -23,9 +26,6 @@ export default function NationalCodeBox(props) {
       error={props.isRequiredEmpty}
       inputProps={{
         maxLength: 10,
-      }}
-      InputProps={{
-        endAdornment: <InputAdornment position="end">Digits</InputAdornment>,
       }}
       sx={{
         width:'100%',

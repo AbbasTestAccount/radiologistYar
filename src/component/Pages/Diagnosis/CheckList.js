@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { CheckCircle, Cancel } from '@mui/icons-material';
+import { CheckCircle, Cancel, ArrowBack, Propane  } from '@mui/icons-material';
 import { Container, Typography, Paper, IconButton, Button, Box } from '@mui/material';
 
-const Checklist = ({ items, radiologyType }) => {
+const Checklist = (props) => {
+  const items = props.items
+  const radiologyType = props.radiologyType
+  const setActiveStep = props.setActiveStep
+
   const initialStatus = items.map(item => {
     const key = Object.keys(item).find(k => k.endsWith('Check'));
     return item[key];
@@ -53,11 +57,22 @@ const Checklist = ({ items, radiologyType }) => {
       return label;
     }
   };
+
+  const onBack = ()=>{
+    setActiveStep(0)
+  }
   
 
   return (
     <Container>
-      <Typography variant="h4" gutterBottom align="center">{radiologyType}</Typography>
+      <Box display="flex" alignItems="center" marginBottom="20px">
+        <IconButton style={{background: '#04AA6D'}} edge="start" aria-label="back" onClick={onBack}>
+          <ArrowBack style={{ color: 'white', fontSize: '35px' }}/>
+        </IconButton>
+        <Typography variant="h4" gutterBottom align="center" style={{ flexGrow: 1 }}>
+          {radiologyType}
+        </Typography>
+      </Box>
       <Button variant="contained" color="primary" onClick={logStatus} style={{ marginBottom: '20px' }}>
         Log Checklist Status
       </Button>

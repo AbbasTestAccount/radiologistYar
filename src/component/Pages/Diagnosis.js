@@ -87,7 +87,7 @@ function Diagnosis() {
       ) : null}
 
       {activeStep === 1 ? (
-        <Checklist items={getChecklistItems()} radiologyType={radiologyType} />
+        <Checklist items={getChecklistItems()} radiologyType={radiologyType} setActiveStep={setActiveStep}/>
       ) : null}
     </div>
   );

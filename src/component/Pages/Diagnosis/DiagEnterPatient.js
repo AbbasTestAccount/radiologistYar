@@ -47,6 +47,8 @@ function DiagEnterPatient(props) {
     const setHasSubmitted = props.setHasSubmitted
     const padding = props.padding  
     const setPadding = props.setPadding
+
+    const setActiveStep = props.setActiveStep
     
     useEffect(() => {
         calculatePadding();
@@ -73,26 +75,39 @@ function DiagEnterPatient(props) {
         }
     };
 
-    const checkRequiredTextField = (event) => {
+    const submitBtnClicked = (event, setActiveStep)=>{
         event.preventDefault();
+
         setHasSubmitted(true);
-    
+        if(checkRequiredTextField()){
+            setActiveStep(1)
+        }
+
+    }
+
+    const checkRequiredTextField = () => {
+        let canSubmit = true
+
         if (firstnameValue.trim() === '') {
           setIsNameRequiredEmpty(true);
+          canSubmit = false
         } else {
           setIsNameRequiredEmpty(false);
         }
     
         if (lastnameValue.trim() === '') {
           setIsLastNameRequiredEmpty(true);
+          canSubmit = false
         } else {
           setIsLastNameRequiredEmpty(false);
         }
     
         if (nationalCodeValue === '') {
           setIsNationalCodeRequiredEmpty(true);
+          canSubmit = false
         } else {
           if (nationalCodeValue.length !== 10) {
+            canSubmit = false
             setNationalCodeValueLength(nationalCodeValue.length);
             console.error("nationalCodeValue is lower than 10, it's :", nationalCodeValue.length);
             setIsNationalCodeRequiredEmpty(false);
@@ -104,16 +119,20 @@ function DiagEnterPatient(props) {
     
         if (ageValue === '') {
           setIsAgeValueRequiredEmpty(true);
+          canSubmit = false
         } else {
           setIsAgeValueRequiredEmpty(false);
         }
     
         if (radiologyType === null) {
           setIsRadiologyTypeRequiredEmpty(true);
+          canSubmit = false
         } else {
           setIsRadiologyTypeRequiredEmpty(false);
         }
-      };
+
+        return canSubmit;
+    };
 
 
 return (
@@ -181,7 +200,7 @@ return (
             <TextArea otherDescription={otherDescription} setOtherDescription={setOtherDescription} />
         </Box>
         <br></br>
-        <button id='submitBtn' type="submit" onClick={checkRequiredTextField}>Submit</button>
+        <button id='submitBtn' type="submit" onClick={(event)=>{submitBtnClicked(event, setActiveStep)}}>Submit</button>
         <br></br>
         <br></br>
 

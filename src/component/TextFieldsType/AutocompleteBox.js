@@ -14,6 +14,11 @@ function AutocompleteBox(props) {
       value={props.radiologyType}
       onChange={(event, newValue) => {
         props.setRadiologyType(newValue);
+        if (newValue) {
+          props.setIsRadiologyTypeRequiredEmpty(false)
+        }else{
+          props.setIsRadiologyTypeRequiredEmpty(true)
+        }
       }}
       renderInput={(params) => (
         <TextField

@@ -193,7 +193,8 @@ return (
             <AutocompleteBox
                 radiologyType={radiologyType}
                 setRadiologyType={setRadiologyType}
-                isRequiredEmpty={hasSubmitted && isRadiologyTypeRequiredEmpty} />
+                isRequiredEmpty={hasSubmitted && isRadiologyTypeRequiredEmpty}
+                setIsRadiologyTypeRequiredEmpty={setIsRadiologyTypeRequiredEmpty} />
             </Box>
             <Box sx={{ width: 300 }}>
             <DatePicker

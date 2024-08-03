@@ -185,7 +185,8 @@ return (
             <NumberedBox
                 ageValue={ageValue}
                 setAgeValue={setAgeValue}
-                isRequiredEmpty={hasSubmitted && isAgeValueRequiredEmpty} />
+                isRequiredEmpty={hasSubmitted && isAgeValueRequiredEmpty} 
+                setIsAgeValueRequiredEmpty={setIsAgeValueRequiredEmpty}/>
             </Box>
 
             <Box sx={{ width: 300 }}>

@@ -7,6 +7,12 @@ export default function FormPropsTextFields(props) {
     const value = event.target.value.replace(/[^\d]/g, ''); // Remove non-numeric characters
     if (value === '' || (Number(value) >= 0 && Number(value) <= 100)) {
       props.setAgeValue(value);
+      if (value === '') {
+        props.setIsAgeValueRequiredEmpty(true)
+      }else{
+        props.setIsAgeValueRequiredEmpty(false)
+
+      }
     }
   };
 

@@ -1,24 +1,17 @@
-import MyStepper from '../Stepper';
-import './Diagnosis.css';
-import React, { useState, useEffect } from "react";
-import '../submitBtn.css'
+import React, { useState } from "react";
 import dayjs from 'dayjs';
+import MyStepper from '../Stepper';
 import DiagEnterPatient from './Diagnosis/DiagEnterPatient';
 import Checklist from './Diagnosis/CheckList';
 import { CssBaseline } from '@mui/material';
-
+import '../submitBtn.css';
+import './Diagnosis.css';
+import { CheckList1, CheckList2 } from './Diagnosis/CheckListArray';
 
 const steps = [
   "Entering Patient Information",
   "Complete CheckBox",
   "Considerations",
-];
-const items = [
-  'Item 1',
-  'Item 2',
-  'Item 3',
-  'Item 4',
-  'Item 5'
 ];
 
 function Diagnosis() {
@@ -41,14 +34,25 @@ function Diagnosis() {
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [padding, setPadding] = useState(0);
 
-
+  // Determine which checklist to show based on the selected radiology type
+  const getChecklistItems = () => {
+    if (radiologyType === 'Central and Peripheral Nervous System') {
+      return CheckList1.CheckLists;
+    } else if (radiologyType === 'Fetal Heart') {
+      return CheckList2.CheckLists;
+    } else {
+      return [];
+    }
+  };
 
   return (
     <div className='Diagnosis-page'>
+      <CssBaseline />
       <MyStepper steps={steps} activeStep={activeStep}></MyStepper>
       <hr></hr>
-      {activeStep === 0?
-        <DiagEnterPatient setActiveStep={setActiveStep}
+      {activeStep === 0 ? (
+        <DiagEnterPatient
+          setActiveStep={setActiveStep}
           setFirstNameValue={setFirstNameValue}
           setLastNameValue={setLastNameValue}
           setNationalCodeValue={setNationalCodeValue}
@@ -63,32 +67,28 @@ function Diagnosis() {
           visitDate={visitDate}
           radiologyType={radiologyType}
           otherDescription={otherDescription}
-          isNameRequiredEmpty={isNameRequiredEmpty} 
+          isNameRequiredEmpty={isNameRequiredEmpty}
           setIsNameRequiredEmpty={setIsNameRequiredEmpty}
-          isLastNameRequiredEmpty={isLastNameRequiredEmpty} 
+          isLastNameRequiredEmpty={isLastNameRequiredEmpty}
           setIsLastNameRequiredEmpty={setIsLastNameRequiredEmpty}
-          isNationalCodeRequiredEmpty={isNationalCodeRequiredEmpty} 
+          isNationalCodeRequiredEmpty={isNationalCodeRequiredEmpty}
           setIsNationalCodeRequiredEmpty={setIsNationalCodeRequiredEmpty}
-          isAgeValueRequiredEmpty={isAgeValueRequiredEmpty} 
+          isAgeValueRequiredEmpty={isAgeValueRequiredEmpty}
           setIsAgeValueRequiredEmpty={setIsAgeValueRequiredEmpty}
-          isRadiologyTypeRequiredEmpty={isRadiologyTypeRequiredEmpty}  
+          isRadiologyTypeRequiredEmpty={isRadiologyTypeRequiredEmpty}
           setIsRadiologyTypeRequiredEmpty={setIsRadiologyTypeRequiredEmpty}
-          nationalCodeValueLength = {nationalCodeValueLength}
-          setNationalCodeValueLength = {setNationalCodeValueLength}
-          hasSubmitted = {hasSubmitted}
-          setHasSubmitted = {setHasSubmitted}
-          padding = {padding}
-          setPadding = {setPadding}
+          nationalCodeValueLength={nationalCodeValueLength}
+          setNationalCodeValueLength={setNationalCodeValueLength}
+          hasSubmitted={hasSubmitted}
+          setHasSubmitted={setHasSubmitted}
+          padding={padding}
+          setPadding={setPadding}
         />
-      :null}
+      ) : null}
 
-      {activeStep === 1?
-        <Checklist items={items} />
-      :null}
-
-
-
-      
+      {activeStep === 1 ? (
+        <Checklist items={getChecklistItems()} radiologyType={radiologyType} />
+      ) : null}
     </div>
   );
 }

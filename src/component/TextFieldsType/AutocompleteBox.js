@@ -33,6 +33,7 @@ function AutocompleteBox(props) {
 }
 
 const radiologyTypes = [
+  "Central and Peripheral Nervous System",
   "Face and Neck",
   "Lymphatic",
   "Fetal Heart",

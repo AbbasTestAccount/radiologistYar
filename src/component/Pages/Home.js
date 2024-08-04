@@ -1,13 +1,14 @@
+import CardSlider from '../CardSlider';
 import './Home.css';
 import React from "react";
-
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
 function Home() {
     return (
-        <div className="content-below-toolBar">
-          {[...Array(100)].map((_, index) => (
-            <p key={index}>This is content line {index + 1}</p>
-          ))}
+        <div className="content-below-toolBar home">
+          <CardSlider/>
         </div>
     );
 }

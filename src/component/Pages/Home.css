@@ -1,5 +1,7 @@
-.home-page{
-    background-color: blue;
-    width: 100px;
-    height: 100px;
+.home{
+    background-color: #888;
+}
+
+.swiper-wrapper{
+    height: auto;
 }

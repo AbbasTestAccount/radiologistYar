@@ -30,6 +30,7 @@
     "react-split-pane": "^0.1.92",
     "react-transition-group": "^4.4.5",
     "schema-utils": "^3.0.0",
+    "swiper": "^11.1.9",
     "web-vitals": "^2.1.4",
     "wouter": "^3.3.0"
   },

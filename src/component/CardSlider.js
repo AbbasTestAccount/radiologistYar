@@ -60,10 +60,14 @@ const CardSlider = () => {
       >
         {people.map((person, index) => (
           <SwiperSlide key={index}>
-            <div className="card" style={{justifyContent:'space-around'}}>
-              <img src={person.image} alt={person.name} className="card-image" />
-              <h3 className="card-name">{person.name}</h3>
-              <p className="card-description">{person.description}</p>
+            <div className="card">
+              <div className="card-image-container">
+                <img src={person.image} alt={person.name} className="card-image" />
+              </div>
+              <div className="card-content">
+                <h3 className="card-name">{person.name}</h3>
+                <p className="card-description">{person.description}</p>
+              </div>
             </div>
           </SwiperSlide>
         ))}

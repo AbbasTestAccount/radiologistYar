@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import { Pagination, Navigation } from 'swiper/modules';
+import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 import './CardSlider.css';
 
 const people = [
@@ -34,11 +34,15 @@ const CardSlider = () => {
   return (
     <div className="card-slider">
       <Swiper
-        modules={[Pagination, Navigation]}
+        modules={[Pagination, Navigation, Autoplay]}
         spaceBetween={30}
         slidesPerView={1}
         navigation
         loop={true}
+        autoplay={{
+            delay: 10000,
+            disableOnInteraction: true,
+        }}
         breakpoints={{
           640: {
             slidesPerView: 1,

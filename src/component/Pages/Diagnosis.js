@@ -52,7 +52,7 @@ function Diagnosis() {
   }, [radiologyType]);
 
   useEffect(() => {
-    console.log(statusOfEachCheckListItems);
+    console.log("statusOfEachCheckListItems : ", statusOfEachCheckListItems);
   }, [statusOfEachCheckListItems]);
 
   return (
@@ -107,7 +107,7 @@ function Diagnosis() {
       ) : null}
 
       {activeStep === 2 ? (
-        <Considerations setActiveStep={setActiveStep} />
+        <Considerations setActiveStep={setActiveStep} statusOfEachCheckListItems={statusOfEachCheckListItems} setStatusOfEachCheckListItems={setStatusOfEachCheckListItems} />
       ) : null}
     </div>
   );

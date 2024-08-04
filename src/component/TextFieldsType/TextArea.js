@@ -34,13 +34,17 @@ const StyledTextarea = styled('textarea')(
 );
 
 export default function Textarea(props) {
+  const { placeholder, description, setDescription } = props;
+
+  const handleChange = (event) => {
+    setDescription(event.target.value); // Ensure to pass event.target.value
+  };
+
   return (
     <StyledTextarea
-      placeholder="Other descriptions..."
-      value={props.otherDescription}
-      onChange={(event, newValue) => {
-        props.setOtherDescription(newValue);
-      }}
+      placeholder={placeholder}
+      value={description || ''} // Ensure value is always a string
+      onChange={handleChange}
       rows={3}
     />
   );

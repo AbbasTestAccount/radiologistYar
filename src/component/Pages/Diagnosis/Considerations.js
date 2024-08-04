@@ -1,6 +1,7 @@
 import React from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, IconButton, Box, Typography, Checkbox } from '@mui/material';
 import { ArrowBack, Cancel } from '@mui/icons-material';
+import Textarea from '../../TextFieldsType/TextArea'; // Import your updated Textarea component
 
 const Considerations = (props) => {
   const { setActiveStep, statusOfEachCheckListItems, setStatusOfEachCheckListItems } = props;
@@ -9,10 +10,20 @@ const Considerations = (props) => {
     setActiveStep(1);
   };
 
-  const handleSuspiciousCaseChange = (filteredIndex) => {
-    const updatedItems = statusOfEachCheckListItems.map((item, idx) => {
-      if (statusOfEachCheckListItems.filter(row => row.checkListStatus !== true)[filteredIndex] === item) {
+  const handleSuspiciousCaseChange = (id) => {
+    const updatedItems = statusOfEachCheckListItems.map(item => {
+      if (item.checkList === id) {
         return { ...item, SuspiciousCase: !item.SuspiciousCase };
+      }
+      return item;
+    });
+    setStatusOfEachCheckListItems(updatedItems);
+  };
+
+  const handleDescriptionChange = (id, newValue) => {
+    const updatedItems = statusOfEachCheckListItems.map(item => {
+      if (item.checkList === id) {
+        return { ...item, descriptionOfSuspicius: newValue };
       }
       return item;
     });
@@ -50,15 +61,15 @@ const Considerations = (props) => {
                 </TableRow>
               ) : (
                 filteredItems.map((row, index) => (
-                  <TableRow key={index}>
+                  <TableRow key={row.checkList}>
                     <TableCell align="center">{row.checkList}</TableCell>
                     <TableCell align="center">
                       {row.checkListStatus === false ? <Cancel style={{ color: 'red' }} /> : ''}
                     </TableCell>
                     <TableCell align="center">
                       <Checkbox
-                        checked={row.SuspiciousCase}
-                        onChange={() => handleSuspiciousCaseChange(index)}
+                        checked={row.SuspiciousCase ?? false} // Default to false if SuspiciousCase is undefined
+                        onChange={() => handleSuspiciousCaseChange(row.checkList)}
                       />
                     </TableCell>
                   </TableRow>
@@ -68,6 +79,22 @@ const Considerations = (props) => {
           </Table>
         </TableContainer>
       </Paper>
+      <Box sx={{ marginTop: '20px' }}>
+        {statusOfEachCheckListItems.map(item => (
+          item.SuspiciousCase && (
+            <Box key={item.checkList} sx={{ marginBottom: '20px' }}>
+              <Typography variant="subtitle1" gutterBottom>
+                Description for: {item.checkList}
+              </Typography>
+              <Textarea
+                placeholder={item.checkList}
+                description={item.descriptionOfSuspicius}
+                setDescription={(newValue) => handleDescriptionChange(item.checkList, newValue)}
+              />
+            </Box>
+          )
+        ))}
+      </Box>
     </Box>
   );
 };

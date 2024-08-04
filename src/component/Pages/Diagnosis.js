@@ -69,14 +69,14 @@ function Diagnosis() {
           setAgeValue={setAgeValue}
           setVisitDate={setVisitDate}
           setRadiologyType={setRadiologyType}
-          setOtherDescription={setOtherDescription}
+          setDescription={setOtherDescription}
           firstnameValue={firstnameValue}
           lastnameValue={lastnameValue}
           nationalCodeValue={nationalCodeValue}
           ageValue={ageValue}
           visitDate={visitDate}
           radiologyType={radiologyType}
-          otherDescription={otherDescription}
+          description={otherDescription}
           isNameRequiredEmpty={isNameRequiredEmpty}
           setIsNameRequiredEmpty={setIsNameRequiredEmpty}
           isLastNameRequiredEmpty={isLastNameRequiredEmpty}
@@ -107,7 +107,7 @@ function Diagnosis() {
       ) : null}
 
       {activeStep === 2 ? (
-        <Considerations setActiveStep={setActiveStep} statusOfEachCheckListItems={statusOfEachCheckListItems} setStatusOfEachCheckListItems={setStatusOfEachCheckListItems} />
+        <Considerations label={"other Descriptions :"} setActiveStep={setActiveStep} statusOfEachCheckListItems={statusOfEachCheckListItems} setStatusOfEachCheckListItems={setStatusOfEachCheckListItems} />
       ) : null}
     </div>
   );

@@ -17,7 +17,7 @@ function DiagEnterPatient(props) {
     const setAgeValue = props.setAgeValue
     const setVisitDate = props.setVisitDate
     const setRadiologyType = props.setRadiologyType
-    const setOtherDescription = props.setOtherDescription
+    const setDescription = props.setDescription
 
     const firstnameValue = props.firstnameValue
     const lastnameValue = props.lastnameValue
@@ -25,7 +25,8 @@ function DiagEnterPatient(props) {
     const ageValue = props.ageValue
     const visitDate = props.visitDate
     const radiologyType = props.radiologyType
-    const otherDescription = props.otherDescription
+    const description = props.description
+    
 
     const isNameRequiredEmpty = props.isNameRequiredEmpty
     const isLastNameRequiredEmpty = props.isLastNameRequiredEmpty
@@ -201,7 +202,7 @@ return (
                 visitDate={visitDate}
                 setVisitDate={setVisitDate} />
             </Box>
-            <TextArea otherDescription={otherDescription} setOtherDescription={setOtherDescription} />
+            <TextArea description={description} setDescription={setDescription} placeholder={"Other descriptions..."} />
         </Box>
         <br></br>
         <button id='submitBtn' type="submit" onClick={(event)=>{submitBtnClicked(event, setActiveStep)}}>Submit</button>

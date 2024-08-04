@@ -32,7 +32,7 @@ function AutocompleteBox(props) {
   );
 }
 
-const radiologyTypes1 = [
+const radiologyTypes = [
   "Fetal Development and Congenital Anomalies",
   "Second- and Third-Trimester Screening Ultrasound",
   "Equipment, Transducers, and Set-Up",
@@ -50,9 +50,8 @@ const radiologyTypes1 = [
   "Ultrasound in Multiple Pregnancy"
 ];
 
-const radiologyTypes = radiologyTypes1.map((item)=>{
-  return item.length > 30 ? item.substring(0, 27) + '...' : item;
-}) 
-
+// const radiologyTypes = radiologyTypes1.map((item)=>{
+//   return item.length > 30 ? item.substring(0, 27) + '...' : item;
+// }) 
 
 export default AutocompleteBox;

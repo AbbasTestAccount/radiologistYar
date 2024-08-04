@@ -100,7 +100,7 @@ function Diagnosis() {
       ) : null}
 
       {activeStep === 2 ? (
-        <Considerations/>
+        <Considerations setActiveStep={setActiveStep}/>
       ) : null}
     </div>
   );

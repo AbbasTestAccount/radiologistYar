@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import dayjs from 'dayjs';
 import MyStepper from '../Stepper';
 import DiagEnterPatient from './Diagnosis/DiagEnterPatient';
 import Checklist from './Diagnosis/CheckList';
-import Considerations from './Diagnosis/Considerations'
+import Considerations from './Diagnosis/Considerations';
 import { CssBaseline } from '@mui/material';
 import '../submitBtn.css';
 import './Diagnosis.css';
@@ -23,7 +23,7 @@ function Diagnosis() {
   const [ageValue, setAgeValue] = useState('');
   const [visitDate, setVisitDate] = useState(dayjs());
   const [radiologyType, setRadiologyType] = useState(null);
-  const [otherDescription, setOtherDescription] = useState();
+  const [otherDescription, setOtherDescription] = useState('');
 
   const [isNameRequiredEmpty, setIsNameRequiredEmpty] = useState(false);
   const [isLastNameRequiredEmpty, setIsLastNameRequiredEmpty] = useState(false);
@@ -35,8 +35,6 @@ function Diagnosis() {
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [padding, setPadding] = useState(0);
 
-
-  // Determine which checklist to show based on the selected radiology type
   const getChecklistItems = () => {
     if (radiologyType === 'Central and Peripheral Nervous System') {
       return CheckList1.CheckLists;
@@ -47,11 +45,15 @@ function Diagnosis() {
     }
   };
 
-  const initialStatus = getChecklistItems().map(item => {
-    const key = Object.keys(item).find(k => k.endsWith('Check'));
-    return item[key];
-  });
-  const [statusOfEachCheckListItems, setStatusOfEachCheckListItems] = useState(initialStatus);
+  const [statusOfEachCheckListItems, setStatusOfEachCheckListItems] = useState([]);
+
+  useEffect(() => {
+    setStatusOfEachCheckListItems(getChecklistItems());
+  }, [radiologyType]);
+
+  useEffect(() => {
+    console.log(statusOfEachCheckListItems);
+  }, [statusOfEachCheckListItems]);
 
   return (
     <div className='Diagnosis-page'>
@@ -95,12 +97,17 @@ function Diagnosis() {
       ) : null}
 
       {activeStep === 1 ? (
-        <Checklist items={getChecklistItems()} radiologyType={radiologyType} setActiveStep={setActiveStep}
-                  statusOfEachCheckListItems={statusOfEachCheckListItems} setStatusOfEachCheckListItems={setStatusOfEachCheckListItems} />
+        <Checklist
+          items={statusOfEachCheckListItems}
+          radiologyType={radiologyType}
+          setActiveStep={setActiveStep}
+          statusOfEachCheckListItems={statusOfEachCheckListItems}
+          setStatusOfEachCheckListItems={setStatusOfEachCheckListItems}
+        />
       ) : null}
 
       {activeStep === 2 ? (
-        <Considerations setActiveStep={setActiveStep}/>
+        <Considerations setActiveStep={setActiveStep} />
       ) : null}
     </div>
   );

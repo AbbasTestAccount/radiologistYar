@@ -32,14 +32,27 @@ function AutocompleteBox(props) {
   );
 }
 
-const radiologyTypes = [
+const radiologyTypes1 = [
+  "Fetal Development and Congenital Anomalies",
+  "Second- and Third-Trimester Screening Ultrasound",
+  "Equipment, Transducers, and Set-Up",
   "Central and Peripheral Nervous System",
-  "Face and Neck",
-  "Lymphatic",
+  "Face and Neck Anomalies",
+  "Lymphatic Anomalies and Hydrops",
   "Fetal Heart",
+  "Thoracic Anomalies",
   "Gastrointestinal Tract",
-  "Urinary Tract",
-  "Skeletal Dysplasias and Muscular"
+  "Urinary Tract Anomalies",
+  "Disorders of Sex Development",
+  "Skeletal Dysplasias and Muscular Anomalies",
+  "Syndromic Conditions",
+  "Ultrasound in Fetal Infections",
+  "Ultrasound in Multiple Pregnancy"
 ];
+
+const radiologyTypes = radiologyTypes1.map((item)=>{
+  return item.length > 30 ? item.substring(0, 27) + '...' : item;
+}) 
+
 
 export default AutocompleteBox;

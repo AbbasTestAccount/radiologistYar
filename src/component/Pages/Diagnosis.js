@@ -3,6 +3,7 @@ import dayjs from 'dayjs';
 import MyStepper from '../Stepper';
 import DiagEnterPatient from './Diagnosis/DiagEnterPatient';
 import Checklist from './Diagnosis/CheckList';
+import Considerations from './Diagnosis/Considerations'
 import { CssBaseline } from '@mui/material';
 import '../submitBtn.css';
 import './Diagnosis.css';
@@ -96,6 +97,10 @@ function Diagnosis() {
       {activeStep === 1 ? (
         <Checklist items={getChecklistItems()} radiologyType={radiologyType} setActiveStep={setActiveStep}
                   statusOfEachCheckListItems={statusOfEachCheckListItems} setStatusOfEachCheckListItems={setStatusOfEachCheckListItems} />
+      ) : null}
+
+      {activeStep === 2 ? (
+        <Considerations/>
       ) : null}
     </div>
   );

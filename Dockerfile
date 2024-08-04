@@ -13,6 +13,9 @@ RUN npm install --legacy-peer-deps
 # Copy the rest of the application source code
 COPY . .
 
+# Set the Node.js memory limit
+ENV NODE_OPTIONS=--max-old-space-size=4096
+
 # Build the React application
 RUN npm run build
 

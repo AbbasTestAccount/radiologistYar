@@ -34,6 +34,7 @@ function Diagnosis() {
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [padding, setPadding] = useState(0);
 
+
   // Determine which checklist to show based on the selected radiology type
   const getChecklistItems = () => {
     if (radiologyType === 'Central and Peripheral Nervous System') {
@@ -44,6 +45,12 @@ function Diagnosis() {
       return [];
     }
   };
+
+  const initialStatus = getChecklistItems().map(item => {
+    const key = Object.keys(item).find(k => k.endsWith('Check'));
+    return item[key];
+  });
+  const [statusOfEachCheckListItems, setStatusOfEachCheckListItems] = useState(initialStatus);
 
   return (
     <div className='Diagnosis-page'>
@@ -87,7 +94,8 @@ function Diagnosis() {
       ) : null}
 
       {activeStep === 1 ? (
-        <Checklist items={getChecklistItems()} radiologyType={radiologyType} setActiveStep={setActiveStep}/>
+        <Checklist items={getChecklistItems()} radiologyType={radiologyType} setActiveStep={setActiveStep}
+                  statusOfEachCheckListItems={statusOfEachCheckListItems} setStatusOfEachCheckListItems={setStatusOfEachCheckListItems} />
       ) : null}
     </div>
   );

@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { CheckCircle, Cancel, ArrowBack, Propane  } from '@mui/icons-material';
+import { CheckCircle, Cancel, ArrowBack  } from '@mui/icons-material';
 import { Container, Typography, Paper, IconButton, Button, Box } from '@mui/material';
 
 const Checklist = (props) => {
   const items = props.items
   const radiologyType = props.radiologyType
   const setActiveStep = props.setActiveStep
+  const statusOfEachCheckListItems = props.statusOfEachCheckListItems
+  const setStatusOfEachCheckListItems = props.setStatusOfEachCheckListItems
 
-  const initialStatus = items.map(item => {
-    const key = Object.keys(item).find(k => k.endsWith('Check'));
-    return item[key];
-  });
 
-  const [status, setStatus] = useState(initialStatus);
+
   const [browserWidth, setBrowserWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -28,22 +26,22 @@ const Checklist = (props) => {
   }, []);
 
   const handleStatusChange = (index, newStatus) => {
-    const updatedStatus = [...status];
-    if (status[index] === newStatus) {
+    const updatedStatus = [...statusOfEachCheckListItems];
+    if (statusOfEachCheckListItems[index] === newStatus) {
       updatedStatus[index] = null;
     } else {
       updatedStatus[index] = newStatus;
     }
-    setStatus(updatedStatus);
+    setStatusOfEachCheckListItems(updatedStatus);
   };
 
-  const logStatus = () => {
-    items.forEach((item, index) => {
-      const key = Object.keys(item).find(k => k.startsWith('cl'));
-      const checkKey = Object.keys(item).find(k => k.endsWith('Check'));
-      console.log(`${key}: ${item[key]}, ${checkKey}: ${status[index]}`);
-    });
-  };
+  // const logStatus = () => {
+  //   items.forEach((item, index) => {
+  //     const key = Object.keys(item).find(k => k.startsWith('cl'));
+  //     const checkKey = Object.keys(item).find(k => k.endsWith('Check'));
+  //     console.log(`${key}: ${item[key]}, ${checkKey}: ${statusOfEachCheckListItems[index]}`);
+  //   });
+  // };
 
   const truncateLabel = (label) => {
     if (browserWidth < 600){
@@ -62,20 +60,22 @@ const Checklist = (props) => {
     setActiveStep(0)
   }
   
-
+  const submitButton = ()=>{
+    setActiveStep(2)
+  }
   return (
     <Container>
-      <Box display="flex" alignItems="center" marginBottom="20px">
+      <Box display="flex" alignItems="center" marginBottom="50px">
         <IconButton style={{background: '#04AA6D'}} edge="start" aria-label="back" onClick={onBack}>
           <ArrowBack style={{ color: 'white', fontSize: '35px' }}/>
         </IconButton>
-        <Typography variant="h4" gutterBottom align="center" style={{ flexGrow: 1 }}>
+        <Typography variant="h4" gutterBottom align="center" style={{ flexGrow: 1 , paddingTop:"8px"}}>
           {radiologyType}
         </Typography>
       </Box>
-      <Button variant="contained" color="primary" onClick={logStatus} style={{ marginBottom: '20px' }}>
+      {/* <Button variant="contained" color="primary" onClick={logStatus} style={{ marginBottom: '20px' }}>
         Log Checklist Status
-      </Button>
+      </Button> */}
       {items.map((item, index) => {
         const key = Object.keys(item).find(k => k.startsWith('cl'));
         const label = truncateLabel(item[key]);
@@ -91,7 +91,7 @@ const Checklist = (props) => {
                 onClick={() => handleStatusChange(index, true)}
                 style={{ height: '50px', width: '50px', padding: '0' }} // Adjust size here
               >
-                <CheckCircle style={{ color: status[index] === true ? 'green' : 'grey', fontSize: '35px' }} />
+                <CheckCircle style={{ color: statusOfEachCheckListItems[index] === true ? 'green' : 'grey', fontSize: '35px' }} />
               </IconButton>
 
               <IconButton
@@ -100,13 +100,16 @@ const Checklist = (props) => {
                 onClick={() => handleStatusChange(index, false)}
                 style={{ height: '50px', width: '50px', padding: '0' }} // Adjust size here
               >
-                <Cancel style={{ color: status[index] === false ? 'red' : 'grey', fontSize: '35px' }} />
+                <Cancel style={{ color: statusOfEachCheckListItems[index] === false ? 'red' : 'grey', fontSize: '35px' }} />
               </IconButton>
               </Box>
             </Box>
           </Paper>
         );
       })}
+      <button id='submitBtn' type="submit" onClick={submitButton}>Submit</button>
+      <br></br>
+      <br></br>
     </Container>
   );
 };

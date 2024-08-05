@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, IconButton, Box, Typography, Checkbox } from '@mui/material';
 import { ArrowBack, Cancel } from '@mui/icons-material';
 import Textarea from '../../TextFieldsType/TextArea'; // Import your updated Textarea component
+import ContextMenu from '../../TextAreaContextMenu'; // Import the ContextMenu component
 
 const Considerations = (props) => {
   const { setActiveStep, statusOfEachCheckListItems, setStatusOfEachCheckListItems } = props;
+  const [contextMenu, setContextMenu] = useState(null);
+  const [currentCheckList, setCurrentCheckList] = useState(null);
 
   const onBack = () => {
     setActiveStep(1);
@@ -29,6 +32,41 @@ const Considerations = (props) => {
     });
     setStatusOfEachCheckListItems(updatedItems);
   };
+
+  const handleContextMenu = (event, checkList) => {
+    event.preventDefault();
+    const rect = event.currentTarget.getBoundingClientRect();
+    setContextMenu(
+      contextMenu === null
+        ? {
+            mouseX: event.clientX + window.scrollX,
+            mouseY: event.clientY + window.scrollY,
+          }
+        : null,
+    );
+    setCurrentCheckList(checkList);
+  };
+
+  const handleClose = () => {
+    setContextMenu(null);
+    setCurrentCheckList(null);
+  };
+
+  const handleEdit = () => {
+    // Handle the edit action here
+    console.log("Edit action for", currentCheckList);
+  };
+
+  const handleDelete = () => {
+    // Handle the delete action here
+    console.log("Delete action for", currentCheckList);
+  };
+
+  const menuItems = [
+    { label: 'Edit', onClick: handleEdit },
+    { label: 'Delete', onClick: handleDelete },
+    currentCheckList && { label: currentCheckList, onClick: () => console.log(currentCheckList) }
+  ].filter(Boolean);
 
   const filteredItems = statusOfEachCheckListItems.filter(row => row.checkListStatus !== true);
 
@@ -82,18 +120,23 @@ const Considerations = (props) => {
       <Box sx={{ marginTop: '20px' }}>
         {statusOfEachCheckListItems.map(item => (
           item.SuspiciousCase && (
-            <Box key={item.checkList} sx={{ marginBottom: '20px' }}>
+            <Box key={item.checkList} sx={{ marginBottom: '20px' }} onContextMenu={(event) => handleContextMenu(event, item.checkList)}>
               <Typography variant="subtitle1" gutterBottom>
-                Description for: {item.checkList}
+                {item.checkList}:
               </Typography>
               <Textarea
-                placeholder={item.checkList}
+                placeholder={"Description for " + item.checkList + " : "}
                 description={item.descriptionOfSuspicius}
                 setDescription={(newValue) => handleDescriptionChange(item.checkList, newValue)}
               />
             </Box>
           )
         ))}
+        <ContextMenu
+          contextMenu={contextMenu}
+          handleClose={handleClose}
+          menuItems={menuItems}
+        />
       </Box>
     </Box>
   );

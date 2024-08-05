@@ -52,23 +52,33 @@ const Considerations = (props) => {
     setCurrentCheckList(null);
   };
 
-  const handleEdit = () => {
-    // Handle the edit action here
-    console.log("Edit action for", currentCheckList);
+  const handleInsertText = (text) => {
+    const updatedItems = statusOfEachCheckListItems.map(item => {
+      if (item.checkList === currentCheckList) {
+        const newText = item.descriptionOfSuspicius ? `${item.descriptionOfSuspicius} ${text}` : text;
+        return { ...item, descriptionOfSuspicius: newText };
+      }
+      return item;
+    });
+    setStatusOfEachCheckListItems(updatedItems);
+    handleClose();
   };
-
-  const handleDelete = () => {
-    // Handle the delete action here
-    console.log("Delete action for", currentCheckList);
-  };
-
-  const menuItems = [
-    { label: 'Edit', onClick: handleEdit },
-    { label: 'Delete', onClick: handleDelete },
-    currentCheckList && { label: currentCheckList, onClick: () => console.log(currentCheckList) }
-  ].filter(Boolean);
 
   const filteredItems = statusOfEachCheckListItems.filter(row => row.checkListStatus !== true);
+
+  const getMenuItems = () => {
+    const currentItem = statusOfEachCheckListItems.find(item => item.checkList === currentCheckList);
+    const description = currentItem?.descriptionOfSuspicius || '';
+
+    const menuItems = [];
+    if (!description.includes("I think patient need to have a MRI on this part of body.")) {
+      menuItems.push({ label: 'MRI', onClick: () => handleInsertText("I think patient need to have a MRI on this part of body.") });
+    }
+    if (!description.includes("I think patient need to have a Sonography on this part of body.")) {
+      menuItems.push({ label: 'Sonography', onClick: () => handleInsertText("I think patient need to have a Sonography on this part of body.") });
+    }
+    return menuItems;
+  };
 
   return (
     <Box sx={{ padding: '20px' }}>
@@ -135,7 +145,7 @@ const Considerations = (props) => {
         <ContextMenu
           contextMenu={contextMenu}
           handleClose={handleClose}
-          menuItems={menuItems}
+          menuItems={getMenuItems()}
         />
       </Box>
     </Box>

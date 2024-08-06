@@ -130,8 +130,8 @@ li a:hover:not(.green-tab) {
 .contextMenuToolBar {
     width: 150px;
     position: absolute;
-    background-color: #333;
-    border: 1px solid #202020;
+    background-color: #04AA6D;
+    border: 1px solid #048c5a;
     border-radius: 1px 1px 10px 1px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 0px;
@@ -148,7 +148,7 @@ li a:hover:not(.green-tab) {
 }
   
 .menuItem:hover {
-    background-color: #202020;
+    background-color: #047c50;
     border-radius: 1px 1px 10px 1px;
   
 }

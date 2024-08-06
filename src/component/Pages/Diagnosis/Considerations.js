@@ -80,6 +80,10 @@ const Considerations = (props) => {
     return menuItems;
   };
 
+  const submitButton = () => {
+    setActiveStep(3);
+  };
+
   return (
     <Box sx={{ padding: '20px' }}>
       <Box display="flex" alignItems="center" marginBottom="50px">
@@ -148,6 +152,9 @@ const Considerations = (props) => {
           menuItems={getMenuItems()}
         />
       </Box>
+      <button id='submitBtn' type="submit" onClick={submitButton}>Submit</button>
+      <br></br>
+      <br></br>
     </Box>
   );
 };

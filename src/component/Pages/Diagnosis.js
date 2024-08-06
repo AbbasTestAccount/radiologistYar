@@ -4,6 +4,7 @@ import MyStepper from '../Stepper';
 import DiagEnterPatient from './Diagnosis/DiagEnterPatient';
 import Checklist from './Diagnosis/CheckList';
 import Considerations from './Diagnosis/Considerations';
+import ReportComponent from './Diagnosis/Report';
 import { CssBaseline } from '@mui/material';
 import '../submitBtn.css';
 import './Diagnosis.css';
@@ -13,6 +14,7 @@ const steps = [
   "Entering Patient Information",
   "Complete CheckBox",
   "Considerations",
+  "Report",
 ];
 
 function Diagnosis() {
@@ -108,6 +110,19 @@ function Diagnosis() {
 
       {activeStep === 2 ? (
         <Considerations label={"other Descriptions :"} setActiveStep={setActiveStep} statusOfEachCheckListItems={statusOfEachCheckListItems} setStatusOfEachCheckListItems={setStatusOfEachCheckListItems} />
+      ) : null}
+
+      {activeStep === 3 ? (
+        <ReportComponent
+          firstnameValue={firstnameValue}
+          lastnameValue={lastnameValue}
+          nationalCodeValue={nationalCodeValue}
+          ageValue={ageValue}
+          visitDate={visitDate}
+          radiologyType={radiologyType}
+          otherDescription={otherDescription}
+          statusOfEachCheckListItems={statusOfEachCheckListItems}
+        />
       ) : null}
     </div>
   );

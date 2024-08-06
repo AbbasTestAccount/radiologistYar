@@ -1,0 +1,26 @@
+.report {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.patient-info p,
+.report .reportUl {
+    margin: 5px 0;
+}
+
+.reportH2, .reportH3 {
+    color: #333;
+}
+
+.reportUl {
+    list-style-type: none;
+    padding: 0;
+}
+
+.reportLi {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+  

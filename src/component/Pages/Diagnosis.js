@@ -8,7 +8,7 @@ import ReportComponent from './Diagnosis/Report';
 import { CssBaseline } from '@mui/material';
 import '../submitBtn.css';
 import './Diagnosis.css';
-import { CheckList1, CheckList2 } from './Diagnosis/CheckListArray';
+import { CheckList1, CheckList2 } from '../Lists/CheckListArray';
 
 const steps = [
   "Entering Patient Information",

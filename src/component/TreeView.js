@@ -18,138 +18,30 @@ import {forwardRef} from 'react'
 // import Icon from './Icon';
 
 import { useEffect, useState, Fragment } from 'react';
+import {itemList} from './Lists/TreeViewList';
+
+function addUniqueIds(items) {
+  let idCounter = 0;
+
+  function assignId(item) {
+      item.id = idCounter.toString();
+      idCounter++;
+
+      if (item.children && item.children.length > 0) {
+          item.children.forEach(assignId);
+      }
+  }
+
+  items.forEach(assignId);
+
+  return items
+}
+
+var ITEMS = addUniqueIds(itemList);
+
 
 
 var itemArray = [];
-
-var ITEMS = [
-  {
-    type:'network',
-    id: '0',
-    label: 'My Network',
-    children:[{
-      type:'nodes',
-      id: '1',
-      label: 'Nodes',
-      children: [
-        {
-          type:'node',
-          id: '2',
-          label: 'TH1',
-          children: [
-            {
-              type:'radios',
-              id: '4', 
-              label: 'Radios', 
-              children:[
-                {
-                  type:'radio2', id: '5', label: 'radio1'
-                },
-                {
-                  type:'radio2', id: '6', label: 'radio2'
-                }
-              ]
-            },
-          ],
-        },
-        {
-          type:'node',
-          id: '3',
-          label: 'TH2',
-          children: [
-            {
-              type:'radios',
-              id: '7', 
-              label: 'Radios', 
-              children:[
-                {
-                  type:'radio2', id: '8', label: 'radio1'
-                },
-                {
-                  type:'radio2', id: '9', label: 'radio2'
-                }
-              ]
-            },
-          ],
-        }
-      ]
-    },
-    {
-      type:'radios',
-      id: '10',
-      label: 'Radio Networks',
-      children:[
-        {
-          type:'radio2', id: '11', label: 'Net1'
-        },
-        {
-          type:'radio2', id: '12', label: 'Net2'
-        }
-      ]
-    }]
-  },
-  {
-    type:'network',
-    id: '13',
-    label: 'My Network',
-  },
-  {
-    type:'network',
-    id: '14',
-    label: 'My Network',
-  },
-  {
-    type:'network',
-    id: '15',
-    label: 'My Network',
-  },
-  {
-    type:'network',
-    id: '16',
-    label: 'My Network',
-  },
-  {
-    type:'network',
-    id: '17',
-    label: 'My Network',
-  },
-  {
-    type:'network',
-    id: '18',
-    label: 'My Network',
-  },
-  {
-    type:'network',
-    id: '19',
-    label: 'My Network',
-  },
-  {
-    type:'network',
-    id: '20',
-    label: 'My Network',
-  },
-  {
-    type:'network',
-    id: '21',
-    label: 'My Network',
-  },
-  {
-    type:'network',
-    id: '22',
-    label: 'My Network',
-  },
-  {
-    type:'network',
-    id: '23',
-    label: 'My Network',
-  },
-  {
-    type:'network',
-    id: '24',
-    label: 'My Network',
-  }
-
-];
 
 const findBiggestId = (items, currentMaxId = '0') => {
   let maxId = currentMaxId;

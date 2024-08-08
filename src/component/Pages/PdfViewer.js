@@ -4,6 +4,7 @@ import { ThreeDot } from "react-loading-indicators";
 
 function Test() {
     const [loadAttempts, setLoadAttempts] = useState(0);
+    const [pdfLink, setPdfLink] = useState('https://blog.faradars.org/wp-content/uploads/2018/12/Integral-CheatSheet-BFCS0009.pdf')
     const [loaded, setLoaded] = useState(false);
     const [loading, setLoading] = useState(true);
 
@@ -74,7 +75,7 @@ function Test() {
                 <iframe
                     name='iframe1'
                     className='pdfViewer'
-                    src={`https://docs.google.com/gview?url=https://blog.faradars.org/wp-content/uploads/2018/12/Integral-CheatSheet-BFCS0009.pdf&embedded=true&attempt=${loadAttempts}`}
+                    src={`https://docs.google.com/gview?url=${pdfLink}&embedded=true&attempt=${loadAttempts}`}
                     loading='lazy'
                     title='pdf'
                     sandbox="allow-scripts allow-same-origin"

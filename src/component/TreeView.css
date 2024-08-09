@@ -161,7 +161,7 @@ code {
 }
 
 
-.node-class:hover , .radio-class:hover , .BookReferenceTitle-class:hover , .BookReference-class:hover, .radio2-class:hover, .radios-class:hover {
+.node-class:hover , .radio-class:hover , .BookReferenceTitle-class:hover , .BookReference-class:hover, .context-menu-active, .radio2-class:hover, .radios-class:hover {
   background-color: #f3e1a073 !important;
   
 }
@@ -316,4 +316,8 @@ li{
 
 #tree-view-box::-ms-scrollbar-thumb:hover {
   background: #555; /* Color of the scrollbar thumb when hovered */
+}
+.css-1qioken-MuiTreeItem2-label{
+  font-size: 0.75rem !important;
+  color: yellow;
 }

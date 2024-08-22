@@ -5,9 +5,11 @@ import Learning from './component/Pages/Learning';
 import AddBookContent from "./component/AddBookContent";
 import Home from "./component/Pages/Home";
 import LearningPdfStyle from "./component/Pages/LearningPdfStyle"
+import Login from './component/Pages/Login';
 import React, { useEffect, useState } from 'react';
 
 import { Route, Router } from "wouter";
+import Profile from './component/Pages/Profile';
 
 function App() {
   const [browserHeight, setBrowserHeight] = useState(window.innerHeight)
@@ -51,6 +53,9 @@ function App() {
           </Route>
           <Route path='/addContent' component={AddBookContent}></Route>
           <Route path='/bookContentPdf' component={LearningPdfStyle}></Route>
+          <Route path={'/login'} component={Login}></Route>
+          <Route path="/profile/:name" component={Profile} />
+          
 
         </Router>
       </div>

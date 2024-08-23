@@ -46,7 +46,7 @@ function App() {
       {/* todo: Add routing */}
       <div id='content-under-toolBar'>
         <Router>
-          <Route path='/home' component={Home}></Route>
+          <Route path='/' component={Home}></Route>
           <Route path='/diagnosis' component={Diagnosis}></Route>
           <Route path='/bookContent'>
             <Learning browserHeight={browserHeight} ></Learning>

@@ -6,28 +6,31 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 import './CardSlider.css';
+import doctor1 from '../assets/Images/Doctors/Abdol Rasoul Sedaghat.jpg'
+import doctor2 from '../assets/Images/Doctors/Amir Reza Radmard.jpg'
+import doctor3 from '../assets/Images/Doctors/Morteza Sanei Tahery.jpg'
+import doctor4 from '../assets/Images/Doctors/Reza Gerami.jpg'
 
 const people = [
   {
-    name: "John Doe",
-    image: "https://via.placeholder.com/150",
-    description: "A software engineer with 5 years of experience."
+    name: "Abdol Rasoul Sedaghat",
+    image: doctor1,
+    description: "Dr. Abdol Rasoul Sedaghat specializes in MRI"
   },
   {
-    name: "Jane Smith",
-    image: "https://via.placeholder.com/150",
-    description: "A project manager who loves agile methodologies."
+    name: "Amir Reza Radmard",
+    image: doctor2,
+    description: "Dr. Amir Reza Radmard in CT scans"
   },
   {
-    name: "Alice Johnson",
-    image: "https://via.placeholder.com/150",
-    description: "A UX/UI designer with a passion for creating intuitive user experiences."
+    name: "Morteza Sanei Tahery",
+    image: doctor3,
+    description: "Dr. Morteza Sanei Tahery in ultrasound"
   },{
-  name: "Abbas Shabrang",
-  image: "https://via.placeholder.com/150",
-  description: "Developer askasjldksalkdj lkas jflksjdl kfjlkds jflkjdskjf lkdjsjfl hdsjhf dsg agfhgsdahfhjkds k hfhd sgfjkdsjlfshiudhjknk."
+  name: "Reza Gerami",
+  image: doctor4,
+  description: "Dr. Reza Gerami in interventional radiology."
     },
-  // Add more people as needed
 ];
 
 const CardSlider = () => {
@@ -62,6 +65,7 @@ const CardSlider = () => {
           <SwiperSlide key={index}>
             <div className="card">
               <div className="card-image-container">
+                
                 <img src={person.image} alt={person.name} className="card-image" />
               </div>
               <div className="card-content">

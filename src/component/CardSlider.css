@@ -48,15 +48,20 @@
 
 
 .card-image-container {
-  background-color: #f0f0f0; /* Different background color */
+  background-color: #f0f0f0;
+  background-image: url(../assets/Images/Background/cardBackground.jpg);
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
   width: 100%;
   padding: 20px;
-  border-bottom: 1px solid #ddd; /* Line separating sections */
+  border-bottom: 1px solid #ddd;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
   
 .card-image {
   width: 100px;

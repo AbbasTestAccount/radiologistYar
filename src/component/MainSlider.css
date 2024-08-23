@@ -6,12 +6,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 40vh;
+  height: 50vh;
   position: relative;
 }
 
 .slick-slide img {
-  height: 40vh;
+  height: 50vh;
   width: -webkit-fill-available;
   object-fit: fill;
   pointer-events: none;

@@ -130,7 +130,7 @@ const ToolBar = (props)=>{
         <ul id='topBar'>
           <li id='home' onMouseEnter={()=>handleMouseEnter('home')} onMouseLeave={()=>{handleMouseLeave('home')}} 
           style={{backgroundColor: showMenuHome? '#202020' : '#333'}}>
-            <a href="home"><span className='home'>Home</span></a>
+            <a href="/"><span className='home'>Home</span></a>
           </li>
           
           <li id='diagnosis' onMouseEnter={()=>handleMouseEnter('diagnosis')} onMouseLeave={()=>{handleMouseLeave('diagnosis')}}

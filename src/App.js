@@ -54,7 +54,7 @@ function App() {
           <Route path='/addContent' component={AddBookContent}></Route>
           <Route path='/bookContentPdf' component={LearningPdfStyle}></Route>
           <Route path={'/login'} component={Login}></Route>
-          <Route path="/profile/:name" component={Profile} />
+          <Route path="/profile" component={Profile} />
           
 
         </Router>

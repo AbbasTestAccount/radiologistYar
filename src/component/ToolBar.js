@@ -135,28 +135,28 @@ const ToolBar = (props)=>{
           
           <li id='diagnosis' onMouseEnter={()=>handleMouseEnter('diagnosis')} onMouseLeave={()=>{handleMouseLeave('diagnosis')}}
           style={{backgroundColor: showMenuDiagnosis? '#202020' : '#333'}}>
-            <a href="diagnosis"><span className='diagnosis'>Diagnosis</span></a>
+            <a href="/diagnosis"><span className='diagnosis'>Diagnosis</span></a>
           </li>
           
           <li id='addContent' onMouseEnter={()=>handleMouseEnter('addContent')} onMouseLeave={()=>{handleMouseLeave('addContent')}}
           style={{backgroundColor: showMenuAddContent? '#202020' : '#333'}}>
-            <a href="addContent"><span className='addContent'>Add Content</span></a>
+            <a href="/addContent"><span className='addContent'>Add Content</span></a>
           </li>
           
           <li id='bookContentPdf' onMouseEnter={()=>handleMouseEnter('bookContentPdf')} onMouseLeave={()=>{handleMouseLeave('bookContentPdf')}}
           style={{backgroundColor: showMenuBookContentPdf? '#202020' : '#333'}}>
-            <a href="bookContentPdf"><span className='bookContentPdf'>Educational content(pdf)</span></a>
+            <a href="/bookContentPdf"><span className='bookContentPdf'>Educational content(pdf)</span></a>
           </li>
           
           <li id='analytics' onMouseEnter={()=>handleMouseEnter('analytics')} onMouseLeave={()=>{handleMouseLeave('analytics')}}
           style={{backgroundColor: showMenuBookContent? '#202020' : '#333'}}>
-            <a href="analytics"><span className='analytics'>Analytics</span></a>
+            <a href="/analytics"><span className='analytics'>Analytics</span></a>
           </li>
           
           <li id='accountContent' className="left-float"
             onMouseEnter={()=>handleMouseEnter('accountContent')} onMouseLeave={()=>{handleMouseLeave('accountContent')}}
             style={{backgroundColor: showMenuAccountContent? '#04AA6D' : '#333'}}>
-            <a className="green-tab" href="accountContent"><span className='accountContent'>Account</span></a>
+            <a className="green-tab" href="/accountContent"><span className='accountContent'>Account</span></a>
           </li>
         </ul>
 
@@ -204,8 +204,8 @@ const ToolBar = (props)=>{
         )} */}
         {showMenuAccountContent && (
           <ul className="contextMenuToolBar" onMouseEnter={() => handleMouseEnterContextMenu('accountContent')} onMouseLeave={() => handleMouseLeaveContextMenu('accountContent')} style={{ top: `${menuPosition.y}px`, left: `${menuPosition.x}px` }}>
-            <a href="signup" style={{textDecoration: 'inherit', color:'inherit'}}><li className="menuItem">SignUp</li></a>
-            <a href="login" style={{textDecoration: 'inherit', color:'inherit'}}><li className="menuItem">LogIn</li></a>
+            <a href="/signup" style={{textDecoration: 'inherit', color:'inherit'}}><li className="menuItem">SignUp</li></a>
+            <a href="/login" style={{textDecoration: 'inherit', color:'inherit'}}><li className="menuItem">LogIn</li></a>
           </ul>
         )}
 

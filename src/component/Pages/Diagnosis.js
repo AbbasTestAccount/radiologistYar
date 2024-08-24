@@ -25,6 +25,8 @@ function Diagnosis() {
   const [ageValue, setAgeValue] = useState('');
   const [visitDate, setVisitDate] = useState(dayjs());
   const [radiologyType, setRadiologyType] = useState(null);
+  const [cityValue, setCityValue] = useState(null);
+  const [genderValue, setGenderValue] = useState(null);
   const [otherDescription, setOtherDescription] = useState('');
 
   const [isNameRequiredEmpty, setIsNameRequiredEmpty] = useState(false);
@@ -32,6 +34,10 @@ function Diagnosis() {
   const [isNationalCodeRequiredEmpty, setIsNationalCodeRequiredEmpty] = useState(false);
   const [isAgeValueRequiredEmpty, setIsAgeValueRequiredEmpty] = useState(false);
   const [isRadiologyTypeRequiredEmpty, setIsRadiologyTypeRequiredEmpty] = useState(false);
+  const [isCityValueRequiredEmpty, setIsCityValueRequiredEmpty] = useState(false);
+  const [isGenderValueRequiredEmpty, setIsGenderValueRequiredEmpty] = useState(false);
+
+
 
   const [nationalCodeValueLength, setNationalCodeValueLength] = useState(0);
   const [hasSubmitted, setHasSubmitted] = useState(false);
@@ -71,6 +77,8 @@ function Diagnosis() {
           setAgeValue={setAgeValue}
           setVisitDate={setVisitDate}
           setRadiologyType={setRadiologyType}
+          setCityValue={setCityValue}
+          setGenderValue={setGenderValue}
           setDescription={setOtherDescription}
           firstnameValue={firstnameValue}
           lastnameValue={lastnameValue}
@@ -78,6 +86,8 @@ function Diagnosis() {
           ageValue={ageValue}
           visitDate={visitDate}
           radiologyType={radiologyType}
+          cityValue={cityValue}
+          genderValue={genderValue}
           description={otherDescription}
           isNameRequiredEmpty={isNameRequiredEmpty}
           setIsNameRequiredEmpty={setIsNameRequiredEmpty}
@@ -89,6 +99,10 @@ function Diagnosis() {
           setIsAgeValueRequiredEmpty={setIsAgeValueRequiredEmpty}
           isRadiologyTypeRequiredEmpty={isRadiologyTypeRequiredEmpty}
           setIsRadiologyTypeRequiredEmpty={setIsRadiologyTypeRequiredEmpty}
+          isCityValueRequiredEmpty={isCityValueRequiredEmpty}
+          isGenderValueRequiredEmpty={isGenderValueRequiredEmpty}
+          setIsCityValueRequiredEmpty={setIsCityValueRequiredEmpty}
+          setIsGenderValueRequiredEmpty={setIsGenderValueRequiredEmpty}
           nationalCodeValueLength={nationalCodeValueLength}
           setNationalCodeValueLength={setNationalCodeValueLength}
           hasSubmitted={hasSubmitted}
@@ -120,6 +134,8 @@ function Diagnosis() {
           ageValue={ageValue}
           visitDate={visitDate}
           radiologyType={radiologyType}
+          cityValue={cityValue}
+          genderValue={genderValue}
           otherDescription={otherDescription}
           statusOfEachCheckListItems={statusOfEachCheckListItems}
         />

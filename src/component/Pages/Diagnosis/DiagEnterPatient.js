@@ -7,7 +7,62 @@ import Box from '@mui/material/Box';
 import DatePicker from "../../TextFieldsType/DatePicker";
 import NationalCodeBox from '../../TextFieldsType/NationalCodeBox'
 import { Alert } from '@mui/material';
+import ReadOnlyBox from "../../TextFieldsType/ReadOnlyBox";
 
+
+const radiologyTypes = [
+  "Fetal Development and Congenital Anomalies",
+  "Second- and Third-Trimester Screening Ultrasound",
+  "Equipment, Transducers, and Set-Up",
+  "Central and Peripheral Nervous System",
+  "Face and Neck Anomalies",
+  "Lymphatic Anomalies and Hydrops",
+  "Fetal Heart",
+  "Thoracic Anomalies",
+  "Gastrointestinal Tract",
+  "Urinary Tract Anomalies",
+  "Disorders of Sex Development",
+  "Skeletal Dysplasias and Muscular Anomalies",
+  "Syndromic Conditions",
+  "Ultrasound in Fetal Infections",
+  "Ultrasound in Multiple Pregnancy"
+];
+
+const cityTypes = [
+"آذربایجان شرقی",
+"آذربایجان غربی",
+"اردبیل",
+"اصفهان",
+"البرز",
+"ایلام",
+"بوشهر",
+"تهران",
+"چهارمحال و بختیاری",
+"خراسان جنوبی",
+"خراسان رضوی",
+"خراسان شمالی",
+"خوزستان",
+"زنجان",
+"سمنان",
+"سیستان و بلوچستان",
+"فارس",
+"قزوین",
+"قم",
+"کردستان",
+"کرمان",
+"کرمانشاه",
+"کهگیلویه و بویراحمد",
+"گلستان",
+"گیلان",
+"لرستان",
+"مازندران",
+"مرکزی",
+"هرمزگان",
+"همدان",
+"یزد"
+]
+
+const genderTypes = ["male", "female"]
 
 
 function DiagEnterPatient(props) {
@@ -17,6 +72,8 @@ function DiagEnterPatient(props) {
     const setAgeValue = props.setAgeValue
     const setVisitDate = props.setVisitDate
     const setRadiologyType = props.setRadiologyType
+    const setCityValue = props.setCityValue
+    const setGenderValue = props.setGenderValue
     const setDescription = props.setDescription
 
     const firstnameValue = props.firstnameValue
@@ -25,6 +82,8 @@ function DiagEnterPatient(props) {
     const ageValue = props.ageValue
     const visitDate = props.visitDate
     const radiologyType = props.radiologyType
+    const cityValue = props.cityValue
+    const genderValue = props.genderValue
     const description = props.description
     
 
@@ -33,6 +92,8 @@ function DiagEnterPatient(props) {
     const isNationalCodeRequiredEmpty = props.isNationalCodeRequiredEmpty
     const isAgeValueRequiredEmpty = props.isAgeValueRequiredEmpty
     const isRadiologyTypeRequiredEmpty = props.isRadiologyTypeRequiredEmpty
+    const isCityValueRequiredEmpty = props.isCityValueRequiredEmpty
+    const isGenderValueRequiredEmpty = props.isGenderValueRequiredEmpty
 
     
     
@@ -41,7 +102,9 @@ function DiagEnterPatient(props) {
     const setIsNationalCodeRequiredEmpty = props.setIsNationalCodeRequiredEmpty
     const setIsAgeValueRequiredEmpty = props.setIsAgeValueRequiredEmpty
     const setIsRadiologyTypeRequiredEmpty = props.setIsRadiologyTypeRequiredEmpty
-    
+    const setIsCityValueRequiredEmpty = props.setIsCityValueRequiredEmpty
+    const setIsGenderValueRequiredEmpty = props.setIsGenderValueRequiredEmpty
+
     const nationalCodeValueLength = props.nationalCodeValueLength  
     const setNationalCodeValueLength = props.setNationalCodeValueLength
     const hasSubmitted = props.hasSubmitted  
@@ -59,14 +122,13 @@ function DiagEnterPatient(props) {
     }, []);
 
     useEffect(() => {
-        if (visitDate) {
-          console.log(`${visitDate.$y} ${visitDate.$M + 1} ${visitDate.$D} `);
-        } else {
-          console.log("null value !!");
-        }
-      }, [visitDate]);
+      if (visitDate) {
+        console.log(`${visitDate.$y} ${visitDate.$M + 1} ${visitDate.$D} `);
+      } else {
+        console.log("null value !!");
+      }
+    }, [visitDate]);
     
-
     const calculatePadding = () => {
         const containerWidth = window.innerWidth;
         if (containerWidth > 1200) {
@@ -132,6 +194,20 @@ function DiagEnterPatient(props) {
           setIsRadiologyTypeRequiredEmpty(false);
         }
 
+        if (cityValue === null) {
+          setIsCityValueRequiredEmpty(true);
+          canSubmit = false
+        } else {
+          setIsCityValueRequiredEmpty(false);
+        }
+
+        if (genderValue === null) {
+          setIsGenderValueRequiredEmpty(true);
+          canSubmit = false
+        } else {
+          setIsGenderValueRequiredEmpty(false);
+        }
+
         return canSubmit;
     };
 
@@ -192,15 +268,39 @@ return (
 
             <Box sx={{ width: 300 }}>
             <AutocompleteBox
-                radiologyType={radiologyType}
-                setRadiologyType={setRadiologyType}
-                isRequiredEmpty={hasSubmitted && isRadiologyTypeRequiredEmpty}
-                setIsRadiologyTypeRequiredEmpty={setIsRadiologyTypeRequiredEmpty} />
+                type={genderValue}
+                setType={setGenderValue}
+                isRequiredEmpty={hasSubmitted && isGenderValueRequiredEmpty}
+                setIsTypeRequiredEmpty={setIsGenderValueRequiredEmpty}
+                options={genderTypes}
+                label="Gender" />
             </Box>
+            <Box sx={{ width: 300 }}>
+            <AutocompleteBox
+                type={radiologyType}
+                setType={setRadiologyType}
+                isRequiredEmpty={hasSubmitted && isRadiologyTypeRequiredEmpty}
+                setIsTypeRequiredEmpty={setIsRadiologyTypeRequiredEmpty}
+                options={radiologyTypes}
+                label="Radiology Type" />
+            </Box>
+
             <Box sx={{ width: 300 }}>
             <DatePicker
                 visitDate={visitDate}
                 setVisitDate={setVisitDate} />
+            </Box>
+            <Box sx={{ width: 300 }}>
+            <AutocompleteBox
+                type={cityValue}
+                setType={setCityValue}
+                isRequiredEmpty={hasSubmitted && isCityValueRequiredEmpty}
+                setIsTypeRequiredEmpty={setIsCityValueRequiredEmpty}
+                options={cityTypes}
+                label="Province" />
+            </Box>
+            <Box sx={{ width: 300 }}>
+              <ReadOnlyBox/>
             </Box>
             <TextArea description={description} setDescription={setDescription} placeholder={"Other descriptions..."} />
         </Box>
@@ -231,6 +331,12 @@ return (
 
         {isRadiologyTypeRequiredEmpty
           ? <Alert className='alert alert-enter' severity="error">Radiology Type is Empty</Alert> : null
+        }
+        {isCityValueRequiredEmpty
+          ? <Alert className='alert alert-enter' severity="error">Province is Empty</Alert> : null
+        }
+        {isGenderValueRequiredEmpty
+          ? <Alert className='alert alert-enter' severity="error">Gender is Empty</Alert> : null
         }
     </div>
     

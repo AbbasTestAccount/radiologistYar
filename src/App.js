@@ -7,6 +7,8 @@ import Home from "./component/Pages/Home";
 import LearningPdfStyle from "./component/Pages/LearningPdfStyle"
 import Login from './component/Pages/Login';
 import React, { useEffect, useState } from 'react';
+import AnalyticsMenu from "./component/Analytics/AnalyticsMenu";
+import AnalyticsPage from './component/Analytics/AnalyticsPage';
 
 import { Route, Router } from "wouter";
 import Profile from './component/Pages/Profile';
@@ -48,13 +50,19 @@ function App() {
         <Router>
           <Route path='/' component={Home}></Route>
           <Route path='/diagnosis' component={Diagnosis}></Route>
-          <Route path='/bookContent'>
+          {/* <Route path='/bookContent'>
             <Learning browserHeight={browserHeight} ></Learning>
-          </Route>
+          </Route> */}
+          
           <Route path='/addContent' component={AddBookContent}></Route>
           <Route path='/bookContentPdf' component={LearningPdfStyle}></Route>
           <Route path={'/login'} component={Login}></Route>
           <Route path="/profile" component={Profile} />
+          <Route path="/analytics" component={AnalyticsMenu} />
+
+          <Route path="/analytics/:chart">
+            <AnalyticsPage/>
+          </Route>
           
 
         </Router>

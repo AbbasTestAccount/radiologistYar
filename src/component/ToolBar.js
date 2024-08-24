@@ -42,7 +42,7 @@ const ToolBar = (props)=>{
         setShowMenuBookContentPdf(showStatus);
         break;
 
-      case 'bookContent':
+      case 'analytics':
         setShowMenuBookContent(showStatus);
         break;
       
@@ -109,10 +109,10 @@ const ToolBar = (props)=>{
       setMenuPosition({x: window.innerWidth-bookContentPdfRect.right, y: (topBarRect.y+topBar.offsetHeight)})  
 
     }else if (showMenuBookContent) {
-      const bookContent = document.getElementById('bookContent')
-      const bookContentRect = bookContent.getBoundingClientRect()
+      const analyticsContent = document.getElementById('analytics')
+      const analyticsContentRect = analyticsContent.getBoundingClientRect()
   
-      setMenuPosition({x: window.innerWidth-bookContentRect.right, y: (topBarRect.y+topBar.offsetHeight)})  
+      setMenuPosition({x: window.innerWidth-analyticsContentRect.right, y: (topBarRect.y+topBar.offsetHeight)})  
     }else if (showMenuAccountContent) {
       const accountContent = document.getElementById('accountContent')
       const accountContentRect = accountContent.getBoundingClientRect()
@@ -148,9 +148,9 @@ const ToolBar = (props)=>{
             <a href="bookContentPdf"><span className='bookContentPdf'>Educational content(pdf)</span></a>
           </li>
           
-          <li id='bookContent' onMouseEnter={()=>handleMouseEnter('bookContent')} onMouseLeave={()=>{handleMouseLeave('bookContent')}}
+          <li id='analytics' onMouseEnter={()=>handleMouseEnter('analytics')} onMouseLeave={()=>{handleMouseLeave('analytics')}}
           style={{backgroundColor: showMenuBookContent? '#202020' : '#333'}}>
-            <a href="bookContent"><span className='bookContent'>Educational content(html)</span></a>
+            <a href="analytics"><span className='analytics'>Analytics</span></a>
           </li>
           
           <li id='accountContent' className="left-float"

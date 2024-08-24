@@ -1,0 +1,30 @@
+.card-grid-charts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 5vw;
+    padding: 20px;
+}
+
+.card-charts {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.card-charts:hover {
+    transform: translateY(-10px);
+    cursor: pointer;
+}
+
+.card-image-charts {
+    width: 100%;
+    height: auto;
+}
+
+.card-title-charts {
+    font-size: 1.2em;
+    margin: 10px 0;
+}

@@ -9,46 +9,31 @@ function AutocompleteBox(props) {
     <Autocomplete
       disablePortal
       id="combo-box-demo"
-      options={radiologyTypes}
+      options={props.options}
       sx={{ width: '100%' }}
-      value={props.radiologyType}
+      value={props.type}
       onChange={(event, newValue) => {
-        props.setRadiologyType(newValue);
+        props.setType(newValue);
         if (newValue) {
-          props.setIsRadiologyTypeRequiredEmpty(false)
+          props.setIsTypeRequiredEmpty(false)
         }else{
-          props.setIsRadiologyTypeRequiredEmpty(true)
+          props.setIsTypeRequiredEmpty(true)
         }
       }}
       renderInput={(params) => (
         <TextField
           {...params}
-          label="Radiology Type"
+          label={props.label}
           required
           error={props.isRequiredEmpty}
+          autoComplete='no'
         />
       )}
     />
   );
 }
 
-const radiologyTypes = [
-  "Fetal Development and Congenital Anomalies",
-  "Second- and Third-Trimester Screening Ultrasound",
-  "Equipment, Transducers, and Set-Up",
-  "Central and Peripheral Nervous System",
-  "Face and Neck Anomalies",
-  "Lymphatic Anomalies and Hydrops",
-  "Fetal Heart",
-  "Thoracic Anomalies",
-  "Gastrointestinal Tract",
-  "Urinary Tract Anomalies",
-  "Disorders of Sex Development",
-  "Skeletal Dysplasias and Muscular Anomalies",
-  "Syndromic Conditions",
-  "Ultrasound in Fetal Infections",
-  "Ultrasound in Multiple Pregnancy"
-];
+
 
 // const radiologyTypes = radiologyTypes1.map((item)=>{
 //   return item.length > 30 ? item.substring(0, 27) + '...' : item;

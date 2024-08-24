@@ -10,12 +10,12 @@ import multiSeriesBarChart from '../../assets/Images/Charts/multiSeriesBarChart.
 
 
 const cards = [
-    { title: 'Different percentage of diseases', image: pieChart },
-    { title: 'Number of each disease in the last 3 months', image: stackedBarCharts },
-    { title: 'Number of one disease in different months', image: multiSeriesCharts },
-    { title: 'Age suffering of patients', image: splineCharts },
-    { title: 'Age suffering of patients', image: boxAndWhiskerChart },
-    { title: 'Gender and number of visits in each city', image: multiSeriesBarChart },
+    { title: 'Different percentage of diseases', image: pieChart , chart: '/analytics/pieChart'},
+    { title: 'Number of each disease in the last 3 months', image: stackedBarCharts , chart: '/analytics/stackedBarCharts'},
+    { title: 'Number of one disease in different months', image: multiSeriesCharts , chart: '/analytics/multiSeriesCharts'},
+    { title: 'Age suffering of patients', image: splineCharts , chart: '/analytics/splineCharts'},
+    { title: 'Age suffering of patients', image: boxAndWhiskerChart , chart: '/analytics/boxAndWhiskerChart'},
+    { title: 'Gender and number of visits in each city', image: multiSeriesBarChart , chart: '/analytics/multiSeriesBarChart'},
 ];
 
 
@@ -24,10 +24,13 @@ const AnalyticsMenu = (props) => {
     return (
         <div className="card-grid-charts">
             {cards.map((card, index) => (
-                <div className="card-charts" key={index}>
-                    <img src={card.image} alt={card.title} className="card-image-charts" />
-                    <h3 className="card-title-charts">{card.title}</h3>
-                </div>
+                <a href={card.chart} style={{color: "inherit", textDecoration: "inherit"}}>
+                    <div className="card-charts" key={index}>
+                        <img src={card.image} alt={card.title} className="card-image-charts" />
+                        <h3 className="card-title-charts">{card.title}</h3>
+                    </div>
+                </a>
+                
             ))}
         </div>
 

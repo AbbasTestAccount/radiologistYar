@@ -54,7 +54,7 @@ li a {
     text-decoration: none;
 }
   
-li a:hover:not(.green-tab) {
+li a:hover:not(.green-tab,.footer-a) {
     background-color: #111;
 }
   

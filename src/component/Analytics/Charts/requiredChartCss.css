@@ -1,0 +1,39 @@
+.canvasjs-chart-credit{
+    display: none;
+}
+
+button[title="More Options"]{
+    margin-right: 100px !important;
+    /* background-color: rgb(24, 24, 24) !important; */
+}
+
+img[alt="More Options"]{
+    /* -webkit-filter: invert(100%); */
+    filter: invert(100%) !important;
+}
+
+.canvasjs-input-field::placeholder {
+    font: 12px sans-serif;
+    margin-left: 10px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    min-width: 100px;
+}
+
+
+/* .active-chip{
+    background-color: #2e7d32 !important;
+    margin-left: 10px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    min-width: 100px;
+}
+
+
+.chip-mode-slector{
+    background-color: #649d67 !important;
+    margin-left: 10px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    min-width: 100px;    
+} */

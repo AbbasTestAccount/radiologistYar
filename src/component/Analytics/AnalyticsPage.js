@@ -1,5 +1,4 @@
-// import Testi from '../Charts/Testi';
-// import PieChart from '../Charts/PieChart';
+import PieChart from './Charts/PieChart';
 // import DateTimeAxisStockChart from '../Charts/ChartsWithTime/StockChart with Date-Time Axis';
 // import ScatterChart from '../Charts/ScatterChart'
 import { useParams } from "wouter";
@@ -11,22 +10,46 @@ const AnalyticsPage = (props) => {
     const { chart } = useParams();
     const chartType = String(chart);
 
-    // return (
-    //     <div id='logs-page'>
-    //         {
-    //             chartType === 'pie' ? 
-    //             <PieChart/> :
-    //             (chartType === 'range' ? 
-    //             <RangeChart/> :
-    //             (chartType === 'dateTime' ? 
-    //             <DateTimeAxisStockChart/> :
-    //             (chartType === 'scatter' ? 
-    //                 <ScatterChart /> :
-    //                 <Testi />)
-    //             ))
-    //         }
-    //     </div>
-    // );
+    setTimeout(() => {
+        const toolBar = document.getElementById('toolBar')
+        const toolBarHeight = toolBar.offsetHeight     
+
+        const logsPage = document.getElementById('logs-page')
+        logsPage.style.backgroundColor = 'rgb(24, 24, 24)'
+        logsPage.style.height =  `calc(${window.innerHeight - toolBarHeight - 0.5}px - 10vh)`
+
+    }, 100);
+    
+    
+
+    return (
+        <div id='logs-page' style={{paddingTop:"10vh"}}>
+            {
+                chartType === 'pieChart' ? 
+                    <PieChart/> :
+                (chartType === 'stackedBarCharts' ? 
+                    <PieChart/> :
+                (chartType === 'multiSeriesCharts' ? 
+                    <PieChart/> :
+                (chartType === 'splineCharts' ? 
+                    <PieChart /> :
+                (chartType === 'boxAndWhiskerChart' ? 
+                    <PieChart /> :
+                (chartType === 'multiSeriesBarChart' ? 
+                    <PieChart /> :
+                    ''
+
+                )))))
+            }
+        </div>
+    );
 };
 
 export default AnalyticsPage;
+
+
+
+
+
+
+

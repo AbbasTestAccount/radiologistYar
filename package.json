@@ -4,6 +4,8 @@
   "homepage": "http://radiologistyar.ir/",
   "private": true,
   "dependencies": {
+    "@canvasjs/charts": "^3.10.4",
+    "@canvasjs/react-charts": "^1.0.2",
     "@ckeditor/ckeditor5-build-classic": "^42.0.2",
     "@ckeditor/ckeditor5-react": "^8.0.0",
     "@date-io/dayjs": "^3.0.0",

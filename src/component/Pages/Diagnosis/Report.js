@@ -3,13 +3,17 @@ import dayjs from 'dayjs';
 import { Button } from '@mui/material';
 import { useReactToPrint } from 'react-to-print';
 import './Report.css';
+import './finalButtonsStyle.css'
+import axios from 'axios';
 
 const Report = forwardRef(({ 
   firstnameValue, 
   lastnameValue, 
   nationalCodeValue, 
   ageValue, 
-  visitDate, 
+  visitDate,
+  cityValue,
+  genderValue,
   radiologyType, 
   otherDescription, 
   statusOfEachCheckListItems 
@@ -20,6 +24,8 @@ const Report = forwardRef(({
       <div className="patient-info">
         <p><strong>First Name:</strong> {firstnameValue}</p>
         <p><strong>Last Name:</strong> {lastnameValue}</p>
+        <p><strong>Gender:</strong> {genderValue}</p>
+        <p><strong>City:</strong> {cityValue}</p>
         <p><strong>National Code:</strong> {nationalCodeValue}</p>
         <p><strong>Age:</strong> {ageValue}</p>
         <p><strong>Visit Date:</strong> {dayjs(visitDate).format('YYYY-MM-DD')}</p>
@@ -44,6 +50,7 @@ const Report = forwardRef(({
 });
 
 function ReportComponent(props) {
+  const setEndOfProcess = props.setEndOfProcess
   const componentRef = React.useRef();
 
   const handlePrint = useReactToPrint({
@@ -51,12 +58,44 @@ function ReportComponent(props) {
     documentTitle: 'Patient Report',
   });
 
+  const endOfDiagnosis = async(e)=>{
+    e.preventDefault();
+    try {
+      const res = await axios.post('http://localhost:3001/api/diag/addNewDiag', {
+        firstnameValue: props.firstnameValue,
+        lastnameValue: props.lastnameValue,
+        nationalCodeValue: props.nationalCodeValue,
+        ageValue: props.ageValue,
+        visitDate: props.visitDate,
+        cityValue: props.cityValue,
+        genderValue: props.genderValue,
+        radiologyType: props.radiologyType,
+        otherDescription: props.otherDescription,
+        doctorName: 'Abbas Shabrang', //todo: add doctor name from cookie
+        statusOfEachCheckListItems: props.statusOfEachCheckListItems
+      });
+      console.log(res.data);
+
+      setEndOfProcess(true)
+    } catch (err) {
+      console.error(err.response?.data || err.message);
+      alert('Signup failed: ' + (err.response?.data?.message || err.message));
+    }
+  }
+
   return (
     <div>
       <Report ref={componentRef} {...props} />
-      <Button variant="contained" color="primary" onClick={handlePrint}>
-        Download as PDF
-      </Button>
+      <div className="button-container">
+        <button className='finalBtn' onClick={handlePrint}>
+          Download as PDF
+        </button>
+
+        <button className='finalBtn2' onClick={endOfDiagnosis}>
+          Submit and End of Diagnosis
+        </button>
+      </div>
+      
       <br />
       <br />
     </div>
@@ -64,3 +103,4 @@ function ReportComponent(props) {
 }
 
 export default ReportComponent;
+

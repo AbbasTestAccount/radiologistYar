@@ -37,11 +37,13 @@ function Diagnosis() {
   const [isCityValueRequiredEmpty, setIsCityValueRequiredEmpty] = useState(false);
   const [isGenderValueRequiredEmpty, setIsGenderValueRequiredEmpty] = useState(false);
 
-
+  const [statusOfEachCheckListItems, setStatusOfEachCheckListItems] = useState([]);
 
   const [nationalCodeValueLength, setNationalCodeValueLength] = useState(0);
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [padding, setPadding] = useState(0);
+
+  const [endOfProcess, setEndOfProcess] = useState(false)
 
   const getChecklistItems = () => {
     if (radiologyType === 'Central and Peripheral Nervous System') {
@@ -53,7 +55,32 @@ function Diagnosis() {
     }
   };
 
-  const [statusOfEachCheckListItems, setStatusOfEachCheckListItems] = useState([]);
+  useEffect(()=>{
+    if(endOfProcess){
+      setActiveStep(0)
+      setFirstNameValue('')
+      setLastNameValue('')
+      setNationalCodeValue('')
+      setAgeValue('')
+      setVisitDate(dayjs())
+      setRadiologyType(null)
+      setCityValue(null)
+      setGenderValue(null)
+      setOtherDescription('')
+      setIsNameRequiredEmpty(false)
+      setIsLastNameRequiredEmpty(false)
+      setIsNationalCodeRequiredEmpty(false)
+      setIsAgeValueRequiredEmpty(false)
+      setIsRadiologyTypeRequiredEmpty(false)
+      setIsCityValueRequiredEmpty(false)
+      setIsGenderValueRequiredEmpty(false)
+      setNationalCodeValueLength(0)
+      setHasSubmitted(false)
+      setStatusOfEachCheckListItems([])
+      
+      setEndOfProcess(false)
+    }
+  },[endOfProcess])
 
   useEffect(() => {
     setStatusOfEachCheckListItems(getChecklistItems());
@@ -138,6 +165,7 @@ function Diagnosis() {
           genderValue={genderValue}
           otherDescription={otherDescription}
           statusOfEachCheckListItems={statusOfEachCheckListItems}
+          setEndOfProcess={setEndOfProcess}
         />
       ) : null}
     </div>

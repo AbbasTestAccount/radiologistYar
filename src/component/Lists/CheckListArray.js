@@ -27,8 +27,20 @@ export const CheckList1 = {
 export const CheckList2 = {
     "Type":"Fetal Heart",
     "CheckLists":[
-        {"checkList":"item1", checkListStatus:null, SuspiciousCase:false, descriptionOfSuspicius:''},
-        {"checkList":"Cerebral Ventriculomegaly, Hydrocephalus", checkListStatus:null, SuspiciousCase:false, descriptionOfSuspicius:''},
-        {"checkList":"Holoprosencephaly", checkListStatus:null, SuspiciousCase:false, descriptionOfSuspicius:''},
+        {"checkList":"Fetal Echocardiography: Set-Up and Imaging Modes", checkListStatus:null, SuspiciousCase:false, descriptionOfSuspicius:''},
+        {"checkList":"Sequential Anatomy and Functional Assessment of the Heart", checkListStatus:null, SuspiciousCase:false, descriptionOfSuspicius:''},
+        {"checkList":"Cardiac Malposition and Situs Anomalies", checkListStatus:null, SuspiciousCase:false, descriptionOfSuspicius:''},
+        {"checkList":"Abnormalities of Systemic and Pulmonary Venous Returns", checkListStatus:null, SuspiciousCase:false, descriptionOfSuspicius:''},
+        {"checkList":"Abnormalities of Atrial and Ventricular Septation", checkListStatus:null, SuspiciousCase:false, descriptionOfSuspicius:''},
+        {"checkList":"Right Heart Anomalies", checkListStatus:null, SuspiciousCase:false, descriptionOfSuspicius:''},
+        {"checkList":"Left Heart Anomalies: Aortic Stenosis, Hypoplastic Left Heart Syndrome, Shone’s Complex", checkListStatus:null, SuspiciousCase:false, descriptionOfSuspicius:''},
+        {"checkList":"Univentricular Heart: Double-Inlet Single Ventricle, Tricuspid Atresia, Mitral Atresia", checkListStatus:null, SuspiciousCase:false, descriptionOfSuspicius:''},
+        {"checkList":"Conotruncal Abnormalities", checkListStatus:null, SuspiciousCase:false, descriptionOfSuspicius:''},
+        {"checkList":"Aortic Arch Anomalies", checkListStatus:null, SuspiciousCase:false, descriptionOfSuspicius:''},
+        {"checkList":"Cardiomyopathies", checkListStatus:null, SuspiciousCase:false, descriptionOfSuspicius:''},
+        {"checkList":"Cardiac Tumors", checkListStatus:null, SuspiciousCase:false, descriptionOfSuspicius:''},
+        {"checkList":"Rare Cardiac Anomalies: Coronary Fistulas, Ventricular Diverticula/Aneurysms, Aortopulmonary Window", checkListStatus:null, SuspiciousCase:false, descriptionOfSuspicius:''},
+        {"checkList":"Fetal Arrhythmias", checkListStatus:null, SuspiciousCase:false, descriptionOfSuspicius:''},
+
     ]
 }

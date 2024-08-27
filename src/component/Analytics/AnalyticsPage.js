@@ -1,6 +1,5 @@
 import PieChart from './Charts/PieChart';
-// import DateTimeAxisStockChart from '../Charts/ChartsWithTime/StockChart with Date-Time Axis';
-// import ScatterChart from '../Charts/ScatterChart'
+import StackedBarCharts from './Charts/StackedBarChart'
 import { useParams } from "wouter";
 // import RangeChart from '../Charts/RangeChart/RangeChart';
 // import './loader.css'
@@ -28,7 +27,7 @@ const AnalyticsPage = (props) => {
                 chartType === 'pieChart' ? 
                     <PieChart/> :
                 (chartType === 'stackedBarCharts' ? 
-                    <PieChart/> :
+                    <StackedBarCharts/> :
                 (chartType === 'multiSeriesCharts' ? 
                     <PieChart/> :
                 (chartType === 'splineCharts' ? 

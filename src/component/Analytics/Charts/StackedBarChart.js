@@ -1,13 +1,23 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import CanvasJSReact from '@canvasjs/react-charts';
 
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 const StackedBar100Chart = () => {
+    const initialVisibility = {
+        "Disease A": true,
+        "Disease B": true,
+        "Disease C": true,
+        "Disease D": true,
+        // Add more diseases...
+    };
+
+    const [visibleDiseases, setVisibleDiseases] = useState(initialVisibility);
+
     const data = [
         {
             name: "Jan",
-            color: "#9bbb59",
+            color: "#F94144",
             monthlyData: [
                 { label: "Disease A", y: 30 },
                 { label: "Disease B", y: 25 },
@@ -18,7 +28,7 @@ const StackedBar100Chart = () => {
         },
         {
             name: "Feb",
-            color: "#7f7f7f",
+            color: "#F3722C",
             monthlyData: [
                 { label: "Disease A", y: 33 },
                 { label: "Disease B", y: 45 },
@@ -29,7 +39,7 @@ const StackedBar100Chart = () => {
         },
         {
             name: "Mar",
-            color: "#7f7f7f",
+            color: "#F8961E",
             monthlyData: [
                 { label: "Disease A", y: 33 },
                 { label: "Disease B", y: 45 },
@@ -40,7 +50,7 @@ const StackedBar100Chart = () => {
         },
         {
             name: "Apr",
-            color: "#7f7f7f",
+            color: "#F9844A",
             monthlyData: [
                 { label: "Disease A", y: 33 },
                 { label: "Disease B", y: 45 },
@@ -51,7 +61,7 @@ const StackedBar100Chart = () => {
         },
         {
             name: "May",
-            color: "#7f7f7f",
+            color: "#F9C74F",
             monthlyData: [
                 { label: "Disease A", y: 33 },
                 { label: "Disease B", y: 45 },
@@ -62,7 +72,7 @@ const StackedBar100Chart = () => {
         },
         {
             name: "Jun",
-            color: "#7f7f7f",
+            color: "#90BE6D",
             monthlyData: [
                 { label: "Disease A", y: 33 },
                 { label: "Disease B", y: 45 },
@@ -73,7 +83,7 @@ const StackedBar100Chart = () => {
         },
         {
             name: "Jul",
-            color: "#7f7f7f",
+            color: "#43AA8B",
             monthlyData: [
                 { label: "Disease A", y: 33 },
                 { label: "Disease B", y: 45 },
@@ -84,7 +94,7 @@ const StackedBar100Chart = () => {
         },
         {
             name: "Aug",
-            color: "#7f7f7f",
+            color: "#4D908E",
             monthlyData: [
                 { label: "Disease A", y: 33 },
                 { label: "Disease B", y: 45 },
@@ -95,7 +105,7 @@ const StackedBar100Chart = () => {
         },
         {
             name: "Sep",
-            color: "#7f7f7f",
+            color: "#577590",
             monthlyData: [
                 { label: "Disease A", y: 33 },
                 { label: "Disease B", y: 45 },
@@ -106,7 +116,7 @@ const StackedBar100Chart = () => {
         },
         {
             name: "Oct",
-            color: "#7f7f7f",
+            color: "#277DA1",
             monthlyData: [
                 { label: "Disease A", y: 33 },
                 { label: "Disease B", y: 45 },
@@ -117,7 +127,7 @@ const StackedBar100Chart = () => {
         },
         {
             name: "Nov",
-            color: "#7f7f7f",
+            color: "#33658a",
             monthlyData: [
                 { label: "Disease A", y: 33 },
                 { label: "Disease B", y: 45 },
@@ -128,7 +138,7 @@ const StackedBar100Chart = () => {
         },
         {
             name: "Dec",
-            color: "#7f7f7f",
+            color: "#2f4858",
             monthlyData: [
                 { label: "Disease A", y: 33 },
                 { label: "Disease B", y: 45 },
@@ -139,8 +149,15 @@ const StackedBar100Chart = () => {
         }
         // Add more diseases...
     ];
-    
+
     const chartRef = useRef(null);
+
+    const toggleDiseaseVisibility = useCallback((disease) => {
+        setVisibleDiseases(prev => ({
+            ...prev,
+            [disease]: !prev[disease]
+        }));
+    }, []);
 
     const toggleDataSeries = useCallback((e) => {
         if (typeof e.dataSeries.visible === "undefined" || e.dataSeries.visible) {
@@ -159,10 +176,11 @@ const StackedBar100Chart = () => {
         legend: {
             verticalAlign: "bottom",
             horizontalAlign: "center",
-            reversed: true,
+            reversed: false,
             cursor: "pointer",
             fontSize: 16,
             itemclick: toggleDataSeries
+
         },
         title: {
             text: "Monthly Patient Count by Disease"
@@ -177,20 +195,34 @@ const StackedBar100Chart = () => {
             interval: 1,
             labelAngle: -45
         },
-        data: data.map(disease => ({
+        data: data.map(month => ({
             type: "stackedBar100",
-            name: disease.name,
+            name: month.name,
             showInLegend: true,
-            color: disease.color,
+            color: month.color,
             indexLabel: "{y}",
             indexLabelFontColor: "white",
-            yValueFormatString: "#,###",
-            dataPoints: disease.monthlyData.map(month => ({ label: month.label, y: month.y }))
+            yValueFormatString: "#",
+            dataPoints: month.monthlyData
+                .filter(disease => visibleDiseases[disease.label])
+                .map(disease => ({ label: disease.label, y: disease.y }))
         }))
     };
 
     return (
         <div>
+            <div>
+                {Object.keys(initialVisibility).map(disease => (
+                    <label key={disease} style={{ marginRight: '10px', color: 'white' }}>
+                        <input
+                            type="checkbox"
+                            checked={visibleDiseases[disease]}
+                            onChange={() => toggleDiseaseVisibility(disease)}
+                        />
+                        {disease}
+                    </label>
+                ))}
+            </div>
             <CanvasJSChart options={options} onRef={ref => chartRef.current = ref} />
         </div>
     );

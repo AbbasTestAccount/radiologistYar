@@ -21,9 +21,8 @@ img[alt="More Options"]{
 }
 
 
-/* .active-chip{
+.active-chip{
     background-color: #2e7d32 !important;
-    margin-left: 10px !important;
     padding-left: 10px !important;
     padding-right: 10px !important;
     min-width: 100px;
@@ -32,8 +31,16 @@ img[alt="More Options"]{
 
 .chip-mode-slector{
     background-color: #649d67 !important;
-    margin-left: 10px !important;
     padding-left: 10px !important;
     padding-right: 10px !important;
     min-width: 100px;    
-} */
+}
+
+.chips-in-a-row{
+    gap: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}

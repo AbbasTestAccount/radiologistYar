@@ -1,6 +1,7 @@
 import PieChart from './Charts/PieChart';
 import StackedBarCharts from './Charts/StackedBarChart'
 import MultiSplineChart from './Charts/MultiSpline'
+import BoxAndWhiskerChart from './Charts/BoxAndWhiskerChart'
 import { useParams } from "wouter";
 // import RangeChart from '../Charts/RangeChart/RangeChart';
 // import './loader.css'
@@ -34,7 +35,7 @@ const AnalyticsPage = (props) => {
                 (chartType === 'splineCharts' ? 
                     <PieChart /> :
                 (chartType === 'boxAndWhiskerChart' ? 
-                    <PieChart /> :
+                    <BoxAndWhiskerChart /> :
                 (chartType === 'multiSeriesBarChart' ? 
                     <PieChart /> :
                     ''

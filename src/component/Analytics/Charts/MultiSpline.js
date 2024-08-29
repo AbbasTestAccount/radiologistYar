@@ -3,7 +3,7 @@ import CanvasJSReact from '@canvasjs/react-charts';
 
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
-const SplineChart = () => {
+const MultiSpline = () => {
     const data = [
         {
             name: "Disease A",
@@ -96,4 +96,4 @@ const SplineChart = () => {
     );
 };
 
-export default SplineChart;
+export default MultiSpline;

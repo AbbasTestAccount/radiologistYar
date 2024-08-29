@@ -4,7 +4,7 @@ import stackedBarCharts from '../../assets/Images/Charts/stackedBarCharts.png';
 import splineCharts from '../../assets/Images/Charts/splineCharts.png';
 import multiSplineChart from '../../assets/Images/Charts/multiSeriesCharts.png';
 import boxAndWhiskerChart from '../../assets/Images/Charts/boxAndWhiskerChart.png';
-import multiSeriesBarChart from '../../assets/Images/Charts/multiSeriesBarChart.png';
+import MultiBarChart from '../../assets/Images/Charts/multiSeriesBarChart.png';
 
 
 
@@ -15,7 +15,7 @@ const cards = [
     { title: 'Number of one disease in different months', image: multiSplineChart , chart: '/analytics/multiSplineChart'},
     { title: 'Age suffering of patients', image: splineCharts , chart: '/analytics/splineCharts'},
     { title: 'Age suffering of patients', image: boxAndWhiskerChart , chart: '/analytics/boxAndWhiskerChart'},
-    { title: 'Gender and number of visits in each city', image: multiSeriesBarChart , chart: '/analytics/multiSeriesBarChart'},
+    { title: 'Gender and number of visits in each city', image: MultiBarChart , chart: '/analytics/multiSeriesBarChart'},
 ];
 
 

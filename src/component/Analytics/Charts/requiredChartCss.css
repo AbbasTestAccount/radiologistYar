@@ -44,3 +44,8 @@ img[alt="More Options"]{
     align-items: center;
     align-content: center;
 }
+
+.MuiChip-label{
+    color: white;
+    font-weight: bold;
+}

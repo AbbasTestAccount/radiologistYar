@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import CanvasJSReact from '@canvasjs/react-charts';
 import Chip from '@mui/material/Chip';
+import './requiredChartCss.css'
 
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 

@@ -204,7 +204,6 @@ const ToolBar = (props)=>{
         )} */}
         {showMenuAccountContent && (
           <ul className="contextMenuToolBar" onMouseEnter={() => handleMouseEnterContextMenu('accountContent')} onMouseLeave={() => handleMouseLeaveContextMenu('accountContent')} style={{ top: `${menuPosition.y}px`, left: `${menuPosition.x}px` }}>
-            <a href="/signup" style={{textDecoration: 'inherit', color:'inherit'}}><li className="menuItem">SignUp</li></a>
             <a href="/login" style={{textDecoration: 'inherit', color:'inherit'}}><li className="menuItem">LogIn</li></a>
           </ul>
         )}

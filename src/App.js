@@ -12,6 +12,8 @@ import AnalyticsPage from './component/Analytics/AnalyticsPage';
 
 import { Route, Router } from "wouter";
 import Profile from './component/Pages/Profile';
+import Cookies from 'js-cookie';
+
 
 function App() {
   const [browserHeight, setBrowserHeight] = useState(window.innerHeight)
@@ -38,8 +40,9 @@ function App() {
     };
   }, []);
 
+  const user = JSON.parse(Cookies.get('user'));
+  console.error("userrrrrrr : ", user);
   
-
 
   return (
     <div className="App">
@@ -56,7 +59,7 @@ function App() {
           
           <Route path='/addContent' component={AddBookContent}></Route>
           <Route path='/bookContentPdf' component={LearningPdfStyle}></Route>
-          <Route path={'/login'} component={Login}></Route>
+          <Route path='/login' component={Login}></Route>
           <Route path="/profile" component={Profile} />
           <Route path="/analytics" component={AnalyticsMenu} />
 
@@ -67,10 +70,6 @@ function App() {
 
         </Router>
       </div>
-
-      
-      
-
     </div>
   );
 }

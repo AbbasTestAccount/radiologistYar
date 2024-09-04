@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useLocation } from 'wouter';
 import * as LoginSignupStyles from "./LoginSignupStyles";
+import Cookies from 'js-cookie';
 import './LoginSignup.css';
 
 function Login() {
@@ -24,6 +25,7 @@ function Login() {
         email: formData.email,
         password: formData.password,
       });
+      console.error("res : ", res);
       console.log(res.data);
       setLocation(`/profile`);
     } catch (err) {
@@ -39,6 +41,10 @@ function Login() {
         email: formData.email,
         password: formData.password,
       });
+      
+      Cookies.set('token', res.data.token, { expires: 7 });
+      Cookies.set('user', JSON.stringify(res.data.user), { expires: 7 });
+      console.log('res.data:', res.data);
       console.log('JWT Token:', res.data.token);
       setLocation(`/profile`);
     } catch (err) {

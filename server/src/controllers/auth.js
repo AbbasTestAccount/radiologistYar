@@ -30,9 +30,19 @@ exports.signup =  async (req, res) => {
                     SELECT SCOPE_IDENTITY() AS userId;`);
 
         const userId = insertResult.recordset[0].userId;
+        const role = insertResult.recordset[0].role;
 
         const token = jwt.sign({ id: userId, email: email }, process.env.JWT_SECRET, { expiresIn: '90d' });
-        res.status(201).json({ status: 'success', message: 'User created successfully', token });
+        res.status(201).json({
+             status: 'success', message: 'User created successfully',
+             token,
+             user: {
+                id: userId,
+                email: email,
+                name: name,
+                role: role
+             }
+            });
     } catch (err) {
         console.error('Error creating user:', err);
         res.status(500).send('Server error');
@@ -65,7 +75,17 @@ exports.signin =  async (req, res) => {
             expiresIn: '90d'
         });
 
-        res.json({ token });
+        res.json({
+            status: 'success', message: 'log in successfully',
+            token,
+            user: {
+                id: user.UserID,
+                email: user.email,
+                name: user.name,
+                role: user.role,
+            },
+        });
+
     } catch (err) {
         console.error('Error signing in:', err);
         res.status(500).send('Server error');

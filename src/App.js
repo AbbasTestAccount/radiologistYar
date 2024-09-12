@@ -40,8 +40,11 @@ function App() {
     };
   }, []);
 
-  const user = JSON.parse(Cookies.get('user'));
-  console.error("userrrrrrr : ", user);
+  const userFromCookie = Cookies.get('user')
+  if (userFromCookie) {
+    const user = JSON.parse(userFromCookie);
+    console.error("userrrrrrr : ", user);    
+  }
   
 
   return (

@@ -64,3 +64,27 @@ exports.addNewDiag =  async (req, res) => {
         res.status(500).send('Server error');
     }
 };
+
+exports.getTop3DiseasesOfPatient = async (req, res) => {
+    try {
+        const pool = await Database.connect();
+
+        const getTop3DiseasesOfPatientRequest = pool.request();
+        const getTop3DiseasesOfPatientResult = await getTop3DiseasesOfPatientRequest
+        .query(`
+            SELECT top 3 radiologyType, COUNT(*) as countOfPatient
+            FROM Diagnosis group by radiologyType order by countOfPatient desc
+        `);
+
+        const top3Diseases = getTop3DiseasesOfPatientResult.recordset.map(disease => ({
+            radiologyType: disease.radiologyType,
+            countOfPatient: disease.countOfPatient
+        }));
+
+        res.status(200).json(top3Diseases);
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to fetch top 3 diseases' });
+    }
+
+
+}

@@ -5,28 +5,28 @@ var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 const Spline = () => {
     const numberOfPatients = [
-        { month: "Jan", patients: 25060 },
-        { month: "Feb", patients: 27980 },
-        { month: "Mar", patients: 42800 },
-        { month: "Apr", patients: 32400 },
-        { month: "May", patients: 35260 },
-        { month: "Jun", patients: 33900 },
-        { month: "Jul", patients: 40000 },
-        { month: "Aug", patients: 52500 },
-        { month: "Sep", patients: 32300 },
-        { month: "Oct", patients: 42000 },
-        { month: "Nov", patients: 37160 },
-        { month: "Dec", patients: 38400 }
+        { month: "Jan", patients: 51 },
+        { month: "Feb", patients: 70 },
+        { month: "Mar", patients: 30 },
+        { month: "Apr", patients: 22 },
+        { month: "May", patients: 40 },
+        { month: "Jun", patients: 33 },
+        { month: "Jul", patients: 20 },
+        { month: "Aug", patients: 49 },
+        { month: "Sep", patients: 25 },
+        { month: "Oct", patients: 34 },
+        { month: "Nov", patients: 50 },
+        { month: "Dec", patients: 22 }
     ];
 
-    const averageValue = 36500
+    const averageValue = 30
 
     const options = {
         animationEnabled: true,
         backgroundColor: 'rgb(24, 24, 24)',
         theme: "dark2",
         title: {
-            text: 'Number of Patients per Month',
+            text: 'Age of Patients per Month',
             fontColor: "white"
         },
         axisX: {
